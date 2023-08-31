@@ -1,2 +1,2 @@
-# WhiteChapel
-https://www.notion.so/WhiteChapel-fb425f02302040798bfc6d0cdabce3c6
+# StudyValley
+https://www.notion.so/6b9542096d3f4f5a86b903f92b190ba3?pvs=4

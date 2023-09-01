@@ -9,7 +9,7 @@ public class PlayerAction : MonoBehaviour
     public float speed;
     float h, v;
     Rigidbody2D rigid;
-    //Animator anim;
+    Animator anim;
     bool isHorizonMove;
     Vector3 dirVec;
     GameObject scanObject;
@@ -17,7 +17,7 @@ public class PlayerAction : MonoBehaviour
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
-        //anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
     }
 
     void Update()
@@ -43,17 +43,17 @@ public class PlayerAction : MonoBehaviour
         //같은 값일때 계속 transition을 태우면 명령이 안먹혀서
         //같은 값이 아닐때만 값을 넣어준다.
         //방향변화 매개변수를 추가하여 한번만 실행되도록 함
-        //if (anim.GetInteger("hAxisRaw") != (int)h)
-        //{
-            //anim.SetBool("isChanged", true);
-            //anim.SetInteger("hAxisRaw", (int)h);
-        //}
-        //else if (anim.GetInteger("vAxisRaw") != (int)v)
-        //{
-            //anim.SetBool("isChanged", true);
-            //anim.SetInteger("vAxisRaw", (int)v);
-        //}
-        //else anim.SetBool("isChanged", false);
+        if (anim.GetInteger("hAxisRaw") != (int)h)
+        {
+            anim.SetBool("isChanged", true);
+            anim.SetInteger("hAxisRaw", (int)h);
+        }
+        else if (anim.GetInteger("vAxisRaw") != (int)v)
+        {
+           anim.SetBool("isChanged", true);
+            anim.SetInteger("vAxisRaw", (int)v);
+        }
+        else anim.SetBool("isChanged", false);
 
         //Direction
         if (vDown && v == 1) dirVec = Vector3.up;

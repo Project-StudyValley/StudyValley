@@ -5,19 +5,24 @@ using UnityEngine;
 public class PlayerAction : MonoBehaviour
 {
     public GameManager gameManager;
+    
+    [SerializeField]
+    private float speed;
 
-    public float speed;
     float h, v;
-    Rigidbody2D rigid;
-    Animator anim;
+    private Rigidbody2D rigid;
+    private Animator anim;
     bool isHorizonMove;
     Vector3 dirVec;
     GameObject scanObject;
+    SpriteRenderer spriteRenderer;
+
 
     void Awake()
     {
         rigid = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     void Update()
@@ -39,6 +44,12 @@ public class PlayerAction : MonoBehaviour
         else if (vDown) isHorizonMove = false;
         else if (hUp || vUp) isHorizonMove = h != 0;
 
+        //Direction Sprite
+        if (Input.GetButtonDown("Horizontal"))
+        {
+            spriteRenderer.flipX = Input.GetAxisRaw("Horizontal") == 1;
+        }
+
         //Animation
         //같은 값일때 계속 transition을 태우면 명령이 안먹혀서
         //같은 값이 아닐때만 값을 넣어준다.
@@ -50,7 +61,7 @@ public class PlayerAction : MonoBehaviour
         }
         else if (anim.GetInteger("vAxisRaw") != (int)v)
         {
-           anim.SetBool("isChanged", true);
+            anim.SetBool("isChanged", true);
             anim.SetInteger("vAxisRaw", (int)v);
         }
         else anim.SetBool("isChanged", false);

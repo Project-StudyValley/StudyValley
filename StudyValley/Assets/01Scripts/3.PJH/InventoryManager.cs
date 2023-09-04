@@ -7,7 +7,7 @@ public class InventoryManager : MonoBehaviour
     public InventorySlot[] inventorySlots;
     public GameObject inventoryItemPrefab;
 
-    public void AddItem(Item item)
+    public bool AddItem(Item item)
     {
         for (int i = 0; i < inventorySlots.Length; i++)
         {
@@ -16,9 +16,10 @@ public class InventoryManager : MonoBehaviour
             if (itemInSlot == null)
             {
                 SpawnNewItem(item, slot);
-                return;
+                return true;
             }
         }
+        return false;
     }
 
     void SpawnNewItem(Item item, InventorySlot slot)

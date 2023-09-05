@@ -33,15 +33,6 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
-
-        vec2 = new Vector2 (horizontal, vertical);
-        playerAnim.SetFloat("moveX", horizontal);
-        playerAnim.SetFloat("moveY", vertical);
-
-
 /*        playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * speed * Time.deltaTime;*/
 
                 if (Input.GetAxisRaw("Horizontal") == 1 || Input.GetAxisRaw("Horizontal") == -1 || Input.GetAxisRaw("Vertical") == 1 || Input.GetAxisRaw("Vertical") == -1)
@@ -53,6 +44,13 @@ public class PlayerController : MonoBehaviour
 
     void FixedUpdate()
     {
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+
+        vec2 = new Vector2(horizontal, vertical);
+        playerAnim.SetFloat("moveX", horizontal);
+        playerAnim.SetFloat("moveY", vertical);
+
         Move();
     }
 

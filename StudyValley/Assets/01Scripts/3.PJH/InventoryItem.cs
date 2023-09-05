@@ -18,7 +18,8 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         item = newItem;
         image.sprite = newItem.image;
-        count = Random.Range(1, 4);
+        //count = Random.Range(1, 5);
+        count = 1;
         RefreshCount();
     }
 

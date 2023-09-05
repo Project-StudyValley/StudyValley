@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
@@ -32,29 +33,32 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * speed * 0.005f;
 
-        playerAnim.SetFloat("moveX", playerRB.velocity.x);
-        playerAnim.SetFloat("moveY", playerRB.velocity.y);
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetAxisRaw("Horizontal") == 1 || Input.GetAxisRaw("Horizontal") == -1 || Input.GetAxisRaw("Vertical") == 1 || Input.GetAxisRaw("Vertical") == -1)
+        vec2 = new Vector2 (horizontal, vertical);
+        playerAnim.SetFloat("moveX", horizontal);
+        playerAnim.SetFloat("moveY", vertical);
+
+
+/*        playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * speed * Time.deltaTime;*/
+
+                if (Input.GetAxisRaw("Horizontal") == 1 || Input.GetAxisRaw("Horizontal") == -1 || Input.GetAxisRaw("Vertical") == 1 || Input.GetAxisRaw("Vertical") == -1)
         {
             playerAnim.SetFloat("lastMoveX", Input.GetAxisRaw("Horizontal"));
             playerAnim.SetFloat("lastMoveY", Input.GetAxisRaw("Vertical"));
         }
-
-
     }
 
-    private void FixedUpdate()
+    void FixedUpdate()
     {
-/*        //Ray(조사액션)
-        Debug.DrawRay(playerRB.position, vec2 * 0.7f, new Color(0, 1, 0));
-        *//*Object라는 레이어를 만들어서 Objcect라는 애만 조사*//*
-        RaycastHit2D rayHit = Physics2D.Raycast(playerRB.position, vec2, 0.7f, LayerMask.GetMask("Object"));
+        Move();
+    }
 
-        if (rayHit.collider != null) scanObject = rayHit.collider.gameObject;
-        else scanObject = null;*/
+    private void Move()
+    {
+        playerRB.velocity = vec2 * speed;
     }
 }
 

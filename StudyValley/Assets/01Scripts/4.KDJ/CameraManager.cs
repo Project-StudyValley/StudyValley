@@ -1,29 +1,61 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraMove : MonoBehaviour
+public class CameraManager : MonoBehaviour
 {
-    public GameObject target; // Ä«¸Ş¶ó°¡ µû¶ó°¥ ´ë»ó
-    public float moveSpeed; // Ä«¸Ş¶ó°¡ µû¶ó°¥ ¼Óµµ
-    private Vector3 targetPosition; // ´ë»óÀÇ ÇöÀç À§Ä¡
+    private static CameraManager instance;
+
+    public GameObject target; // ì¹´ë©”ë¼ê°€ ë”°ë¼ê°ˆ ëŒ€ìƒ
+    public float moveSpeed; // ì¹´ë©”ë¼ê°€ ë”°ë¼ê°ˆ ì†ë„
+    private Vector3 targetPosition; // ëŒ€ìƒì˜ í˜„ì¬ ìœ„ì¹˜
+
+    [SerializeField]
+    private float moveHorizonMax;
+    [SerializeField] 
+    private float moveHorizonMin;
+    [SerializeField] 
+    private float moveVertiMax;
+    [SerializeField] 
+    private float moveVertiMin;
+
 
     private void Start()
     {
-        DontDestroyOnLoad(this.gameObject);
+        if (instance == null)
+        {
+            DontDestroyOnLoad(this.gameObject);
+
+            instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
     // Update is called once per frame
     void Update()
     {
-        // ´ë»óÀÌ ÀÖ´ÂÁö Ã¼Å©
+        // ëŒ€ìƒì´ ìˆëŠ”ì§€ ì²´í¬
         if (target.gameObject != null)
         {
-            // this´Â Ä«¸Ş¶ó¸¦ ÀÇ¹Ì (z°ªÀº Ä«¸Ş¶ó°ªÀ» ±×´ë·Î À¯Áö)
+
+            // targetì€ í”Œë ˆì´ì–´ë¥¼ ì˜ë¯¸ (zê°’ì€ ì¹´ë©”ë¼ê°’ì„ ê·¸ëŒ€ë¡œ ìœ ì§€)
             targetPosition.Set(target.transform.position.x, target.transform.position.y, this.transform.position.z);
 
-            // vectorA -> B±îÁö TÀÇ ¼Óµµ·Î ÀÌµ¿
+            targetPosition = ClampCamera(targetPosition);
+
+            // vectorA -> Bê¹Œì§€ Tì˜ ì†ë„ë¡œ ì´ë™
             this.transform.position = Vector3.Lerp(this.transform.position, targetPosition, moveSpeed * Time.deltaTime);
         }
+    }
+
+    public Vector3 ClampCamera(Vector3 position)
+    {
+
+        position.x = Mathf.Clamp(position.x, moveHorizonMin, moveHorizonMax);   
+        position.y = Mathf.Clamp(position.y, moveVertiMin, moveVertiMax); 
+        return position;
     }
 }
 

@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class TransferMap : MonoBehaviour
 {
     public string ShopScene;
-
+    public string HomeScene;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +21,7 @@ public class TransferMap : MonoBehaviour
         if(collision.gameObject.name == "Player")
         {
             SceneManager.LoadScene(ShopScene);
+            SceneManager.LoadScene(HomeScene);
         }
 
 

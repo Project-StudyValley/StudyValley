@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pantsLeftIdle
+  m_Name: hairUpIdle
   serializedVersion: 7
   m_Legacy: 0
   m_Compressed: 0
@@ -21,7 +21,7 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: -1896705472, guid: 153417c3b32a7064fa672e60f1f620cc, type: 3}
+      value: {fileID: 1902934936, guid: e96357cb10a5f1e41941408265297126, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -44,7 +44,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: -1896705472, guid: 153417c3b32a7064fa672e60f1f620cc, type: 3}
+    - {fileID: 1902934936, guid: e96357cb10a5f1e41941408265297126, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}

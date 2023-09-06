@@ -534,10 +534,10 @@ AnimatorStateTransition:
     m_ConditionEvent: moveX
     m_EventTreshold: -0.1
   - m_ConditionMode: 3
-    m_ConditionEvent: moveX
+    m_ConditionEvent: moveY
     m_EventTreshold: -0.1
   - m_ConditionMode: 4
-    m_ConditionEvent: moveY
+    m_ConditionEvent: moveX
     m_EventTreshold: 0.1
   - m_ConditionMode: 4
     m_ConditionEvent: moveY

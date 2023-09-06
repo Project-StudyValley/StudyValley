@@ -29,11 +29,17 @@ public class PlayerController : MonoBehaviour
             playerAnim = GetComponent<Animator>();
             boxCollider = GetComponent<BoxCollider2D>();
             instance = this;
-        }   
+        }
         else
         {
             Destroy(this.gameObject);
         }
+
+        DontDestroyOnLoad(this.gameObject);
+
+        playerRB = GetComponent<Rigidbody2D>();
+        playerAnim = GetComponent<Animator>();
+        boxCollider = GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame

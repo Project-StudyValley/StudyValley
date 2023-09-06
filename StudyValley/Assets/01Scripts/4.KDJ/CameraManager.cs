@@ -39,7 +39,6 @@ public class CameraManager : MonoBehaviour
         // 대상이 있는지 체크
         if (target.gameObject != null)
         {
-
             // target은 플레이어를 의미 (z값은 카메라값을 그대로 유지)
             targetPosition.Set(target.transform.position.x, target.transform.position.y, this.transform.position.z);
 
@@ -52,7 +51,6 @@ public class CameraManager : MonoBehaviour
 
     public Vector3 ClampCamera(Vector3 position)
     {
-
         position.x = Mathf.Clamp(position.x, moveHorizonMin, moveHorizonMax);   
         position.y = Mathf.Clamp(position.y, moveVertiMin, moveVertiMax); 
         return position;

@@ -8,8 +8,8 @@ using static UnityEngine.GraphicsBuffer;
 public class TransferMap : MonoBehaviour
 {
     public string TransferMapName;
-    public Transform SpawnPoint;
-    public Transform SpawnPoint2;
+/*    public Transform SpawnPoint;
+    public StartPoint otherSP;*/
 
     private PlayerController thePlayer;
     private CameraManager theCamera;
@@ -24,21 +24,8 @@ public class TransferMap : MonoBehaviour
     {
         if(collision.gameObject.name == "Player")
         {
-/*            onOffCamera.SetActive(false);*/
-            /*            thePlayer.currentMapName = TransferMapName;*/
-
-            theCamera.transform.position = new Vector3(SpawnPoint2.transform.position.x, SpawnPoint2.transform.position.y, theCamera.transform.position.z);
-            thePlayer.transform.position = SpawnPoint.transform.position;
-
+            /*thePlayer.currentMapName = TransferMapName;*/
             SceneManager.LoadScene(TransferMapName);
         }
     }
-
-/*    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.name == "Player")
-        {
-            onOffCamera.SetActive(true);
-        }
-    }*/
 }

@@ -7,8 +7,6 @@ using UnityEngine.UIElements;
 
 public class ItemDrop : MonoBehaviour
 {
-    public Item item;
-
 
     [SerializeField]
     private int maxBounce;      //Æ¨±â´Â È½¼ö

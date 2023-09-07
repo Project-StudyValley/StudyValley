@@ -12,6 +12,8 @@ public class InventoryManager : MonoBehaviour
 
     int selectedSlot = -1;
 
+    public GameObject mainInventory;
+
     private void Awake()
     {
         if (instance == null)
@@ -42,6 +44,11 @@ public class InventoryManager : MonoBehaviour
                 }
                 ChangeSelectedSlot(number - 1);
             }
+        }
+
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            mainInventory.SetActive(!mainInventory.activeSelf);
         }
     }
 

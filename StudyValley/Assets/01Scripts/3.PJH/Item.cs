@@ -7,7 +7,7 @@ using UnityEngine.Tilemaps;
 public class Item : ScriptableObject
 {
     [Header("Only gameplay")]
-    //public string itemCode = "";
+    public ActionType actionType;
 
     [Header("Only UI")]
     public bool stackable = true;
@@ -22,7 +22,8 @@ public class Item : ScriptableObject
 //    Tool
 //}
 
-//public enum ActionType
-//{
-
-//}
+public enum ActionType
+{
+    dig,
+    water
+}

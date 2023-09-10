@@ -10,6 +10,11 @@ public class Magnet : MonoBehaviour
 
     private Transform player;               //플레이어의 위치를 저장하는 변수
 
+    public ItemDrop itemDrop;
+
+    public Item itemData;
+    public GameObject itemGameObject;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,17 +25,40 @@ public class Magnet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //아이템과 플레이어 사이의 거리 계산
-        float distance = Vector3.Distance(transform.position, player.position);
-
-        //거리가 magnetDistance이내일 경우 아이템을 플레이어 쪽으로 이동
-        if(distance <= magnetDistance)
+        if (itemDrop._isGrounded == true)
         {
-            transform.position = Vector3.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
+            //아이템과 플레이어 사이의 거리 계산
+            float distance = Vector3.Distance(transform.position, player.position);
+
+            //거리가 magnetDistance이내일 경우 아이템을 플레이어 쪽으로 이동
+            if (distance <= magnetDistance)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, player.position, moveSpeed * Time.deltaTime);
+            }
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
-        
+        if (itemDrop._isGrounded == true)
+        {
+            if (collision.gameObject.CompareTag("Player"))
+            {
+                gameObject.SetActive(false);
+                InventoryManager.instance.AddItem(itemData);
+                Destroy(itemGameObject);
+
+                Debug.Log(itemData);
+            }
+        }
     }
+/*    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            InventoryManager.instance.AddItem(itemData);
+            Destroy(gameObject);
+
+            Debug.Log(itemData);
+        }
+    }*/
 }

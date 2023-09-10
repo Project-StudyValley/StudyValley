@@ -30,6 +30,18 @@ public class ItemDrop : MonoBehaviour
     [SerializeField]
     private Transform shadow;
 
+    public bool _isGrounded
+    {
+        get
+        {
+            return isGrounded;
+        }
+        set
+        {
+            isGrounded = value;
+        }
+    }
+    
     void Start()
     {
         currentHeight = Random.Range(yForce - 1, yForce);

@@ -105,7 +105,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99dff1fd3cb793245bff126015ffadca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1842442539659091347, guid: 797e353e59748f145ad8f77d0ba49380, type: 3}
+  target: {fileID: 0}
   moveSpeed: 4
   moveHorizonMax: 15.5
   moveHorizonMin: -14

@@ -47,12 +47,18 @@ TagManager:
   - name: Wall
     uniqueID: 1114286651
     locked: 0
+  - name: Building_DownSide
+    uniqueID: 1637918099
+    locked: 0
   - name: Objects
     uniqueID: 1512362921
     locked: 0
   - name: Charactors
     uniqueID: 3652762557
     locked: 0
-  - name: New Layer 5
+  - name: Building_UpSide
+    uniqueID: 636640145
+    locked: 0
+  - name: InvisibleWall
     uniqueID: 1065731517
     locked: 0

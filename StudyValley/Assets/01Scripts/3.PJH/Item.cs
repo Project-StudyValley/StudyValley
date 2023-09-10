@@ -24,6 +24,8 @@ public class Item : ScriptableObject
 
 public enum ActionType
 {
+    fruit,
     dig,
-    water
+    water,
+    plant
 }

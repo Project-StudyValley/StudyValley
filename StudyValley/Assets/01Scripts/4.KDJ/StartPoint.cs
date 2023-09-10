@@ -29,6 +29,5 @@ public class StartPoint : MonoBehaviour
             thePlayer.transform.position = this.transform.position;
             thePlayer.currentMapName = scene.name;
         }
-        
     }
 }

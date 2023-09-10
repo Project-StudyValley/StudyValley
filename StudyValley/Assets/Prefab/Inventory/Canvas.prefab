@@ -342,7 +342,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryManager: {fileID: 0}
   itemsToPickup:
-  - {fileID: 11400000, guid: a773054589f0f384aa07207622ba6b55, type: 2}
+  - {fileID: 11400000, guid: bb4b26579a72f9e419f583738dcbb159, type: 2}
   - {fileID: 11400000, guid: e0c70f629a1ac30408e7eff31bfc56c3, type: 2}
   - {fileID: 11400000, guid: 4d3e2eecd895bd542aafe86e09ab72ba, type: 2}
 --- !u!114 &1329252603418751937
@@ -676,7 +676,7 @@ RectTransform:
   - {fileID: 5942884398815211057}
   - {fileID: 4164608248104403585}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1168,7 +1168,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1590260215825722306
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1642,7 +1642,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1979710959185549188
 Transform:
   m_ObjectHideFlags: 0

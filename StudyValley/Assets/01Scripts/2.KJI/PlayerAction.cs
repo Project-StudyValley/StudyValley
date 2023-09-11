@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -13,24 +14,24 @@ public class PlayerAction : MonoBehaviour
     public Tilemap GrowTileMap;
     public Tilemap SeedTileMap;
     public Tilemap ToolTileMap;
-    public Tilemap WetTileMap;
 
-    public Tile[] GrowTile;
-    public Tile[] SeedTile;
-    public Tile[] ToolTile;
-    public Tile[] WetTile;
+    public List<Tile> GrowTile;
+    public List<Tile> SeedTile;
+    public List<Tile> ToolTile;
 
     public int spawnCont;
     public GameObject[] item;
 
     public Item selectedItem;
 
+    private PlayerController thePlayer;
+    private string mainSceneName = "ProtoType_Main";
 
     public GameObject farmGrid;
 
     private void Awake()
     {
-        if(instance == null)
+        if (instance == null)
         {
             instance = this;
         }
@@ -48,9 +49,9 @@ public class PlayerAction : MonoBehaviour
 
             if (selectedItem != null)
             {
-                switch(selectedItem.actionType)
+                switch (selectedItem.actionType)
                 {
-                    case ActionType.water :
+                    case ActionType.water:
 
                         //foreach (Tile fruit in TileMapManager.instance.tiles)
                         //{
@@ -60,7 +61,7 @@ public class PlayerAction : MonoBehaviour
                         //    }
                         //}
 
-                        GrowTile = tileMapList(GrowTileMap.GetTile(grid.WorldToCell(transform.position)));
+                        GrowTile = TileMapList(GrowTileMap.GetTile(grid.WorldToCell(transform.position)));
 
                         if (SeedTileMap.GetTile(grid.WorldToCell(transform.position)) == SeedTile[1])
                         {
@@ -89,6 +90,11 @@ public class PlayerAction : MonoBehaviour
                         }
                         else if (GrowTileMap.GetTile(grid.WorldToCell(transform.position)) == GrowTile[4])
                         {
+                            GrowTileMap.SetTile(grid.WorldToCell(transform.position), GrowTile[5]);
+                            Debug.Log("4");
+                        }
+                        else if (GrowTileMap.GetTile(grid.WorldToCell(transform.position)) == GrowTile[5])
+                        {
                             GrowTileMap.SetTile(grid.WorldToCell(transform.position), GrowTile[0]);
                             ToolTileMap.SetTile(grid.WorldToCell(transform.position), ToolTile[0]);
 
@@ -98,7 +104,8 @@ public class PlayerAction : MonoBehaviour
                                 itemGO.transform.position = transform.position;
                                 Instantiate(itemGO);
                             }
-                            Debug.Log("4");
+                            Debug.Log("5");
+
                         }
                         break;
 
@@ -115,7 +122,7 @@ public class PlayerAction : MonoBehaviour
                         break;
 
                     case ActionType.plant1:
-                        SeedTile[1] = TileMapManager.instance.apple_Tile;
+                        SeedTile[1] = TileMapManager.instance.hotPepper_Tile;
 
                         if (ToolTileMap.GetTile(grid.WorldToCell(transform.position)) == ToolTile[1])
                         {
@@ -123,6 +130,7 @@ public class PlayerAction : MonoBehaviour
                             if (SeedTileMap.GetTile(grid.WorldToCell(transform.position)) == SeedTile[0])
                             {
                                 SeedTileMap.SetTile(grid.WorldToCell(transform.position), SeedTile[1]);
+                                Debug.Log("Pepper");
                             }
                             else
                             {
@@ -131,7 +139,7 @@ public class PlayerAction : MonoBehaviour
                         }
                         break;
                     case ActionType.plant2:
-                        SeedTile[1] = TileMapManager.instance.grape_Tile;
+                        SeedTile[1] = TileMapManager.instance.corn_Tile;
 
                         if (ToolTileMap.GetTile(grid.WorldToCell(transform.position)) == ToolTile[1])
                         {
@@ -139,6 +147,8 @@ public class PlayerAction : MonoBehaviour
                             if (SeedTileMap.GetTile(grid.WorldToCell(transform.position)) == SeedTile[0])
                             {
                                 SeedTileMap.SetTile(grid.WorldToCell(transform.position), SeedTile[1]);
+                                Debug.Log("corn");
+
                             }
                             else
                             {
@@ -147,7 +157,7 @@ public class PlayerAction : MonoBehaviour
                         }
                         break;
                     case ActionType.plant3:
-                        SeedTile[1] = TileMapManager.instance.waterMelon_Tile;
+                        SeedTile[1] = TileMapManager.instance.pumpkin_Tile;
 
                         if (ToolTileMap.GetTile(grid.WorldToCell(transform.position)) == ToolTile[1])
                         {
@@ -155,6 +165,8 @@ public class PlayerAction : MonoBehaviour
                             if (SeedTileMap.GetTile(grid.WorldToCell(transform.position)) == SeedTile[0])
                             {
                                 SeedTileMap.SetTile(grid.WorldToCell(transform.position), SeedTile[1]);
+                                Debug.Log("pumpkin");
+
                             }
                             else
                             {
@@ -164,30 +176,38 @@ public class PlayerAction : MonoBehaviour
                         break;
                 }
 
-                /*                //¶¥Á¥°ÔÇÏ±â
-                                else if (selectedItem.actionType == ActionType.water)
-                                {                                
-                                    if (ToolTileMap.GetTile(grid.WorldToCell(transform.position)) == ToolTile[0])
-                                    {
-                                        ToolTileMap.SetTile(grid.WorldToCell(transform.position), ToolTile[2]);
-                                    }
-                                }*/
+                /*  //¶¥Á¥°ÔÇÏ±â
+                 else if (selectedItem.actionType == ActionType.water)
+                 {                                
+                      if (ToolTileMap.GetTile(grid.WorldToCell(transform.position)) == ToolTile[0])
+                     {
+                          ToolTileMap.SetTile(grid.WorldToCell(transform.position), ToolTile[2]);
+                     }
+                 }*/
             }
         }
     }
     public void ResetGrid()
     {
         grid = GameObject.Find("Grid").GetComponent<Grid>();
+/*        if (mainSceneName == thePlayer.currentMapName)
+        {*/
+            GrowTileMap = GameObject.Find("GrowTileMap").GetComponent<Tilemap>();
+            SeedTileMap = GameObject.Find("SeedTileMap").GetComponent<Tilemap>();
+            ToolTileMap = GameObject.Find("ToolTileMap").GetComponent<Tilemap>();
+      /*  }*/
     }
 
-    private Tile[] tileMapList (TileBase tile)
+    private List<Tile> TileMapList(TileBase tile)
     {
-        foreach(var fruit in TileMapManager.instance.tiles)
+        foreach (var fruit in TileMapManager.instance.tiles)
         {
-            if(fruit == tile)
-            {
+            Debug.Log("123");
+/*            if (fruit == tile)
+            {*/
+               
                 return TileMapManager.instance.fruit_Grow[fruit];
-            }
+/*            }*/
         }
         return null;
     }

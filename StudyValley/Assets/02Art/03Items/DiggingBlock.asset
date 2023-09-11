@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9f1cf85e1ec3f4479b9cac62a27280b, type: 3}
   m_Name: DiggingBlock
   m_EditorClassIdentifier: 
-  actionType: 3
+  actionType: 5
   stackable: 1
   image: {fileID: 2403724249865808194, guid: 1b39c0fe73f0433468e25eb21cfde7c2, type: 3}

@@ -12,11 +12,11 @@ public class StartPoint : MonoBehaviour
     private Vector3 cameraVec3;         //카메라 스폰 위치 벡터값
     public GameObject startCameraPos;   //카메라를 스폰시킬 위치를 가지고있는 게임오브젝트
 
-    public TilemapManager tilemapManager;
+    public PlayerAction playerAction;
 
     private void Awake()
     {
-        tilemapManager = GetComponent<TilemapManager>();
+        playerAction = GetComponent<PlayerAction>();
     }
 
     // Start is called before the first frame update
@@ -25,7 +25,7 @@ public class StartPoint : MonoBehaviour
         theCamera = FindObjectOfType<CameraManager>();
         thePlayer = FindObjectOfType<PlayerController>();
 
-        TilemapManager.instance.ResetGrid();
+/*        PlayerAction.instance.ResetGrid();*/
 
         Scene scene = SceneManager.GetActiveScene();
 

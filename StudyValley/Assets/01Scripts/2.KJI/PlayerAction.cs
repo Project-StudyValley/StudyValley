@@ -1,96 +1,194 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class PlayerAction : MonoBehaviour
 {
-    public GameManager gameManager;
-    
-    [SerializeField]
-    private float speed;
+    public static PlayerAction instance;
 
-    float h, v;
-    private Rigidbody2D rigid;
-    private Animator anim;
-    bool isHorizonMove;
-    Vector3 dirVec;
-    GameObject scanObject;
-    SpriteRenderer spriteRenderer;
+    public Grid grid;
+
+    public Tilemap GrowTileMap;
+    public Tilemap SeedTileMap;
+    public Tilemap ToolTileMap;
+    public Tilemap WetTileMap;
+
+    public Tile[] GrowTile;
+    public Tile[] SeedTile;
+    public Tile[] ToolTile;
+    public Tile[] WetTile;
+
+    public int spawnCont;
+    public GameObject[] item;
+
+    public Item selectedItem;
 
 
-    void Awake()
+    public GameObject farmGrid;
+
+    private void Awake()
     {
-        rigid = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
     }
 
     void Update()
     {
-        // 상태변수로 플레이어 이동 제한
-        //Move Value
-        h = gameManager.isAction ? 0 : Input.GetAxisRaw("Horizontal");
-        v = gameManager.isAction ? 0 : Input.GetAxisRaw("Vertical");
-
-        //Check Button Down&Up
-        bool hDown = gameManager.isAction ? false : Input.GetButtonDown("Horizontal");
-        bool vDown = gameManager.isAction ? false : Input.GetButtonDown("Vertical");
-        bool hUp = gameManager.isAction ? false : Input.GetButtonUp("Horizontal");
-        bool vUp = gameManager.isAction ? false : Input.GetButtonUp("Vertical");
-
-        //Check Horizontal Move
-        //현재 AxisRaw값에 따라 수평, 수직 판단하여 해결
-        if (hDown) isHorizonMove = true;
-        else if (vDown) isHorizonMove = false;
-        else if (hUp || vUp) isHorizonMove = h != 0;
-
-        //Direction Sprite
-        if (Input.GetButtonDown("Horizontal"))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            spriteRenderer.flipX = Input.GetAxisRaw("Horizontal") == 1;
-        }
+            selectedItem = InventoryManager.instance.GetSelectedItem(true);
 
-        //Animation
-        //같은 값일때 계속 transition을 태우면 명령이 안먹혀서
-        //같은 값이 아닐때만 값을 넣어준다.
-        //방향변화 매개변수를 추가하여 한번만 실행되도록 함
-        if (anim.GetInteger("hAxisRaw") != (int)h)
-        {
-            anim.SetBool("isChanged", true);
-            anim.SetInteger("hAxisRaw", (int)h);
-        }
-        else if (anim.GetInteger("vAxisRaw") != (int)v)
-        {
-            anim.SetBool("isChanged", true);
-            anim.SetInteger("vAxisRaw", (int)v);
-        }
-        else anim.SetBool("isChanged", false);
+            if (selectedItem != null)
+            {
+                switch(selectedItem.actionType)
+                {
+                    case ActionType.water :
 
-        //Direction
-        if (vDown && v == 1) dirVec = Vector3.up;
-        else if (vDown && v == -1) dirVec = Vector3.down;
-        else if (hDown && h == -1) dirVec = Vector3.left;
-        else if (hDown && h == 1) dirVec = Vector3.right;
+                        //foreach (Tile fruit in TileMapManager.instance.tiles)
+                        //{
+                        //    if (fruit == GrowTileMap.GetTile(grid.WorldToCell(transform.position)))
+                        //    {
+                        //        GrowTile = TileMapManager.instance.fruit_Grow[fruit];
+                        //    }
+                        //}
 
-        //scanObject출력
-        if (Input.GetButtonDown("Jump") && scanObject != null)
-            gameManager.Action(scanObject);
+                        GrowTile = tileMapList(GrowTileMap.GetTile(grid.WorldToCell(transform.position)));
+
+                        if (SeedTileMap.GetTile(grid.WorldToCell(transform.position)) == SeedTile[1])
+                        {
+                            if (GrowTileMap.GetTile(grid.WorldToCell(transform.position)) == GrowTile[0])
+                            {
+                                ToolTileMap.SetTile(grid.WorldToCell(transform.position), ToolTile[2]);
+                                GrowTileMap.SetTile(grid.WorldToCell(transform.position), GrowTile[1]);
+                                SeedTileMap.SetTile(grid.WorldToCell(transform.position), SeedTile[0]);
+                                Debug.Log("0");
+                            }
+                        }
+                        else if (GrowTileMap.GetTile(grid.WorldToCell(transform.position)) == GrowTile[1])
+                        {
+                            GrowTileMap.SetTile(grid.WorldToCell(transform.position), GrowTile[2]);
+                            Debug.Log("1");
+                        }
+                        else if (GrowTileMap.GetTile(grid.WorldToCell(transform.position)) == GrowTile[2])
+                        {
+                            GrowTileMap.SetTile(grid.WorldToCell(transform.position), GrowTile[3]);
+                            Debug.Log("2");
+                        }
+                        else if (GrowTileMap.GetTile(grid.WorldToCell(transform.position)) == GrowTile[3])
+                        {
+                            GrowTileMap.SetTile(grid.WorldToCell(transform.position), GrowTile[4]);
+                            Debug.Log("3");
+                        }
+                        else if (GrowTileMap.GetTile(grid.WorldToCell(transform.position)) == GrowTile[4])
+                        {
+                            GrowTileMap.SetTile(grid.WorldToCell(transform.position), GrowTile[0]);
+                            ToolTileMap.SetTile(grid.WorldToCell(transform.position), ToolTile[0]);
+
+                            for (int i = 0; i < spawnCont; i++)
+                            {
+                                GameObject itemGO = item[1];
+                                itemGO.transform.position = transform.position;
+                                Instantiate(itemGO);
+                            }
+                            Debug.Log("4");
+                        }
+                        break;
+
+                    case ActionType.dig:
+                        //삽           
+                        if (ToolTileMap.GetTile(grid.WorldToCell(transform.position)) == ToolTile[0])
+                        {
+                            ToolTileMap.SetTile(grid.WorldToCell(transform.position), ToolTile[1]);
+                        }
+                        else
+                        {
+                            ToolTileMap.SetTile(grid.WorldToCell(transform.position), ToolTile[0]);
+                        }
+                        break;
+
+                    case ActionType.plant1:
+                        SeedTile[1] = TileMapManager.instance.apple_Tile;
+
+                        if (ToolTileMap.GetTile(grid.WorldToCell(transform.position)) == ToolTile[1])
+                        {
+                            //씨앗            
+                            if (SeedTileMap.GetTile(grid.WorldToCell(transform.position)) == SeedTile[0])
+                            {
+                                SeedTileMap.SetTile(grid.WorldToCell(transform.position), SeedTile[1]);
+                            }
+                            else
+                            {
+                                SeedTileMap.SetTile(grid.WorldToCell(transform.position), SeedTile[0]);
+                            }
+                        }
+                        break;
+                    case ActionType.plant2:
+                        SeedTile[1] = TileMapManager.instance.grape_Tile;
+
+                        if (ToolTileMap.GetTile(grid.WorldToCell(transform.position)) == ToolTile[1])
+                        {
+                            //씨앗            
+                            if (SeedTileMap.GetTile(grid.WorldToCell(transform.position)) == SeedTile[0])
+                            {
+                                SeedTileMap.SetTile(grid.WorldToCell(transform.position), SeedTile[1]);
+                            }
+                            else
+                            {
+                                SeedTileMap.SetTile(grid.WorldToCell(transform.position), SeedTile[0]);
+                            }
+                        }
+                        break;
+                    case ActionType.plant3:
+                        SeedTile[1] = TileMapManager.instance.waterMelon_Tile;
+
+                        if (ToolTileMap.GetTile(grid.WorldToCell(transform.position)) == ToolTile[1])
+                        {
+                            //씨앗            
+                            if (SeedTileMap.GetTile(grid.WorldToCell(transform.position)) == SeedTile[0])
+                            {
+                                SeedTileMap.SetTile(grid.WorldToCell(transform.position), SeedTile[1]);
+                            }
+                            else
+                            {
+                                SeedTileMap.SetTile(grid.WorldToCell(transform.position), SeedTile[0]);
+                            }
+                        }
+                        break;
+                }
+
+                /*                //땅젖게하기
+                                else if (selectedItem.actionType == ActionType.water)
+                                {                                
+                                    if (ToolTileMap.GetTile(grid.WorldToCell(transform.position)) == ToolTile[0])
+                                    {
+                                        ToolTileMap.SetTile(grid.WorldToCell(transform.position), ToolTile[2]);
+                                    }
+                                }*/
+            }
+        }
+    }
+    public void ResetGrid()
+    {
+        grid = GameObject.Find("Grid").GetComponent<Grid>();
     }
 
-    void FixedUpdate()
+    private Tile[] tileMapList (TileBase tile)
     {
-        //쯔꾸르풍 게임의 특징 대각선으로 움직일 수 없음을 구현하기 위해
-        Vector2 moveVec = isHorizonMove ? new Vector2(h, 0) : new Vector2(0, v);
-        rigid.velocity = moveVec * speed;
-
-        //Ray(조사액션)
-        Debug.DrawRay(rigid.position, dirVec * 0.7f, new Color(0, 1, 0));
-        /*Object라는 레이어를 만들어서 Objcect라는 애만 조사*/
-        RaycastHit2D rayHit = Physics2D.Raycast(rigid.position, dirVec, 0.7f, LayerMask.GetMask("Object"));
-
-        if (rayHit.collider != null) scanObject = rayHit.collider.gameObject;
-        else scanObject = null;
+        foreach(var fruit in TileMapManager.instance.tiles)
+        {
+            if(fruit == tile)
+            {
+                return TileMapManager.instance.fruit_Grow[fruit];
+            }
+        }
+        return null;
     }
 }
-
-

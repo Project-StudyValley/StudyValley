@@ -27,5 +27,7 @@ public enum ActionType
     fruit,
     dig,
     water,
-    plant
+    plant1,
+    plant2,
+    plant3,
 }

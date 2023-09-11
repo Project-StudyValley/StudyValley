@@ -25,6 +25,8 @@ public class StartPoint : MonoBehaviour
         theCamera = FindObjectOfType<CameraManager>();
         thePlayer = FindObjectOfType<PlayerController>();
 
+        TilemapManager.instance.ResetGrid();
+
         Scene scene = SceneManager.GetActiveScene();
 
         cameraVec3 = startCameraPos.gameObject.transform.position;

@@ -18,6 +18,7 @@ public class TransferMap : MonoBehaviour
     {
         thePlayer = FindObjectOfType<PlayerController>();
         theCamera = FindObjectOfType<CameraManager>();
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -28,4 +29,6 @@ public class TransferMap : MonoBehaviour
             SceneManager.LoadScene(TransferMapName);
         }
     }
+
+
 }

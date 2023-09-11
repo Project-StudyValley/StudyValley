@@ -6465,7 +6465,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3193626809395195617, guid: 872fa247b9f28494a8d8a70968575e02, type: 3}
       propertyPath: m_Name
-      value: FarmGrid 1
+      value: Grid
       objectReference: {fileID: 0}
     - target: {fileID: 8357221731697499541, guid: 872fa247b9f28494a8d8a70968575e02, type: 3}
       propertyPath: m_RootOrder

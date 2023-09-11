@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
 
 public class StartPoint : MonoBehaviour
 {
@@ -10,6 +11,13 @@ public class StartPoint : MonoBehaviour
 
     private Vector3 cameraVec3;         //카메라 스폰 위치 벡터값
     public GameObject startCameraPos;   //카메라를 스폰시킬 위치를 가지고있는 게임오브젝트
+
+    public TilemapManager tilemapManager;
+
+    private void Awake()
+    {
+        tilemapManager = GetComponent<TilemapManager>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +36,13 @@ public class StartPoint : MonoBehaviour
             //플레이어 이동
             thePlayer.transform.position = this.transform.position;
             thePlayer.currentMapName = scene.name;
+
+            if (startPoint == "ProtoType_Main")
+            {
+               SetActive(false);
+            }
         }
+
+
     }
 }

@@ -28,6 +28,9 @@ public class TilemapManager : MonoBehaviour
         {
             itemDrop = GameObject.Find("Spawner");
         }*/
+
+    public GameObject farmGrid;
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space))
@@ -39,12 +42,15 @@ public class TilemapManager : MonoBehaviour
                 //물주기 -> 식물자라기
                 if (selectedItem.actionType == ActionType.water)
                 {
-                    if (GrowTileMap.GetTile(grid.WorldToCell(transform.position)) == GrowTile[0])
-                    {
-                        ToolTileMap.SetTile(grid.WorldToCell(transform.position), ToolTile[2]);
-                        GrowTileMap.SetTile(grid.WorldToCell(transform.position), GrowTile[1]);
-                        SeedTileMap.SetTile(grid.WorldToCell(transform.position), SeedTile[0]);
-                        Debug.Log("0");
+                    if (SeedTileMap.GetTile(grid.WorldToCell(transform.position)) == SeedTile[1])
+                        {
+                        if (GrowTileMap.GetTile(grid.WorldToCell(transform.position)) == GrowTile[0])
+                        {
+                            ToolTileMap.SetTile(grid.WorldToCell(transform.position), ToolTile[2]);
+                            GrowTileMap.SetTile(grid.WorldToCell(transform.position), GrowTile[1]);
+                            SeedTileMap.SetTile(grid.WorldToCell(transform.position), SeedTile[0]);
+                            Debug.Log("0");
+                        }
                     }
                     else if (GrowTileMap.GetTile(grid.WorldToCell(transform.position)) == GrowTile[1])
                     {

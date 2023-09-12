@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 152312d7a76b25a409e09bad2f926802, type: 3}
+  m_Name: bottom00
+  m_EditorClassIdentifier: 
+  bodyPartName: bottom
+  bodyPartAnimationID: 0
+  allBodyPartAnimations:
+  - {fileID: 7400000, guid: aa1a5b616c29bd949bc514398d435878, type: 2}
+  - {fileID: 7400000, guid: 52cccaa45e04dbc40bf30f45d7821067, type: 2}
+  - {fileID: 7400000, guid: 6d5d8bb9703ac3443911220c010a9428, type: 2}
+  - {fileID: 7400000, guid: 989fe7ee56b898a49b042543661f4d5a, type: 2}
+  - {fileID: 7400000, guid: 0a8316fae6a823a4e92e3184799128ba, type: 2}
+  - {fileID: 7400000, guid: 2002d36a35891eb48bf2f45e761930c5, type: 2}
+  - {fileID: 7400000, guid: c3b3940a74636dd4fbe871cd8d437c5e, type: 2}
+  - {fileID: 7400000, guid: 23abc3b7fcb4c8846af769bc594716c1, type: 2}

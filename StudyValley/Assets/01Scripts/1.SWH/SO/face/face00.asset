@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 152312d7a76b25a409e09bad2f926802, type: 3}
+  m_Name: face00
+  m_EditorClassIdentifier: 
+  bodyPartName: face
+  bodyPartAnimationID: 0
+  allBodyPartAnimations:
+  - {fileID: 7400000, guid: c7fa40381422bf447a70f3d235ed0f2b, type: 2}
+  - {fileID: 7400000, guid: b9dd3df449e5b05419a1b5719f9e119e, type: 2}
+  - {fileID: 7400000, guid: b8cb8fe21767438418ab4e89f0523ca3, type: 2}
+  - {fileID: 7400000, guid: 98d754e4a0888064ebd3c3a10924bd56, type: 2}
+  - {fileID: 7400000, guid: 514a00867f717e9459c89c22efa28fd5, type: 2}
+  - {fileID: 7400000, guid: e503145b09cf4c647860b4c4466f7e09, type: 2}
+  - {fileID: 7400000, guid: 70167fcd38ec55b498e53494f1afb0b2, type: 2}
+  - {fileID: 7400000, guid: f371933336eac29438c9a915d5bea4dc, type: 2}

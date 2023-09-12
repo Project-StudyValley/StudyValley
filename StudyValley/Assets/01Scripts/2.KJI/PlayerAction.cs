@@ -25,9 +25,9 @@ public class PlayerAction : MonoBehaviour
     public GameObject[] spawnItem;
     public Dictionary<Tile, GameObject> LastSpawnItem;
 
-
     public Item selectedItem;
 
+    public Vector3 scaleVector;
 
     public PlayerController thePlayer;
     public string mainSceneName = "ProtoType_Main";
@@ -51,10 +51,10 @@ public class PlayerAction : MonoBehaviour
 
     private void Start()
     {
-
-        LastSpawnItem.Add(TileMapManager.instance.hotPepper_Grow_Tile[5], spawnItem[0]);
+        
+/*        LastSpawnItem.Add(TileMapManager.instance.hotPepper_Grow_Tile[5], spawnItem[0]);
         LastSpawnItem.Add(TileMapManager.instance.corn_Grow_Tile[5], spawnItem[1]);
-        LastSpawnItem.Add(TileMapManager.instance.pumpkin_Grow_Tile[5], spawnItem[2]);
+        LastSpawnItem.Add(TileMapManager.instance.pumpkin_Grow_Tile[5], spawnItem[2]);*/
 
     }
     void Update()
@@ -81,20 +81,21 @@ public class PlayerAction : MonoBehaviour
 
                             GrowTile = TileMapList(SeedTileMap.GetTile(grid.WorldToCell(transform.position)));
 
-                            if (SeedTileMap.GetTile(grid.WorldToCell(transform.position)) == SeedTile[1])
+                            if (GrowTileMap.GetTile(grid.WorldToCell(transform.position)) == GrowTile[0])   
                             {
-                                if (GrowTileMap.GetTile(grid.WorldToCell(transform.position)) == GrowTile[0])
+                                if (SeedTileMap.GetTile(grid.WorldToCell(transform.position)) == SeedTile[1])
                                 {
                                     ToolTileMap.SetTile(grid.WorldToCell(transform.position), ToolTile[2]);
                                     GrowTileMap.SetTile(grid.WorldToCell(transform.position), GrowTile[1]);
-                                    //SeedTileMap.SetTile(grid.WorldToCell(transform.position), SeedTile[2]);
-                                    
+
+                                    SeedTileMap.SetTile(grid.WorldToCell(transform.position), SeedTile[0]);
+                                    //SeedTile[1].GetComponent<Transform>().localScale = Vector2.one * Mathf.Clamp(0, 0, 0);
                                     Debug.Log("0");
                                     return;
                                 }
                             }
 
-                            if (GrowTileMap.GetTile(grid.WorldToCell(transform.position)) == GrowTile[1])
+                            else if (GrowTileMap.GetTile(grid.WorldToCell(transform.position)) == GrowTile[1])
                             {
                                 GrowTileMap.SetTile(grid.WorldToCell(transform.position), GrowTile[2]);
                                 Debug.Log("1");
@@ -249,14 +250,15 @@ public class PlayerAction : MonoBehaviour
 
     private List<Tile> TileMapList(TileBase tile)
     {
-        foreach (var fruit in TileMapManager.instance.tiles)
+        foreach (var Vegetavle in TileMapManager.instance.tiles)
         {
             Debug.Log("123");
-            Debug.Log(fruit);
-            Debug.Log(tile);
-            if (fruit == tile)
+            Debug.Log(Vegetavle);
+            
+            if (Vegetavle == tile)
             {
-                return TileMapManager.instance.fruit_Grow[fruit];
+                Debug.Log(tile);
+                return TileMapManager.instance.fruit_Grow[Vegetavle];
             }
         }
         return null;

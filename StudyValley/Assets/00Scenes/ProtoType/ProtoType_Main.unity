@@ -1376,7 +1376,6 @@ MonoBehaviour:
   corn_Tile: {fileID: 11400000, guid: 3a435480ec225464fb62482afaac7c6d, type: 2}
   pumpkin_Tile: {fileID: 11400000, guid: 86046eab9a5b9d346831d096e7751bf7, type: 2}
   tiles: []
-  Item: []
   hotPepper_Grow_Tile:
   - {fileID: 11400000, guid: 0ad0740c74818604ea566dc00531cb8b, type: 2}
   - {fileID: 11400000, guid: 16dbf08b810fb11458c4f8d27f32041b, type: 2}

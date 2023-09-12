@@ -89,6 +89,7 @@ public class ItemDrop : MonoBehaviour
             else
             {
                 isGrounded = true;
+                shadow.localScale = Vector2.one * Mathf.Clamp(0, 0, 0);
             }
         }
     }

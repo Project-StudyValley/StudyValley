@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UIElements;
+using UnityEngine.VFX;
 
 public class PlayerAction : MonoBehaviour
 {
@@ -20,14 +22,20 @@ public class PlayerAction : MonoBehaviour
     public List<Tile> ToolTile;
 
     public int spawnCont;
-    public GameObject[] item;
+    public GameObject[] spawnItem;
+    public Dictionary<Tile, GameObject> LastSpawnItem;
+
 
     public Item selectedItem;
+
 
     public PlayerController thePlayer;
     public string mainSceneName = "ProtoType_Main";
 
+
     public GameObject farmGrid;
+
+    
 
     private void Awake()
     {
@@ -41,6 +49,14 @@ public class PlayerAction : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+
+        LastSpawnItem.Add(TileMapManager.instance.hotPepper_Grow_Tile[5], spawnItem[0]);
+        LastSpawnItem.Add(TileMapManager.instance.corn_Grow_Tile[5], spawnItem[1]);
+        LastSpawnItem.Add(TileMapManager.instance.pumpkin_Grow_Tile[5], spawnItem[2]);
+
+    }
     void Update()
     {
         if (mainSceneName == thePlayer.currentMapName)
@@ -72,6 +88,7 @@ public class PlayerAction : MonoBehaviour
                                     ToolTileMap.SetTile(grid.WorldToCell(transform.position), ToolTile[2]);
                                     GrowTileMap.SetTile(grid.WorldToCell(transform.position), GrowTile[1]);
                                     //SeedTileMap.SetTile(grid.WorldToCell(transform.position), SeedTile[2]);
+                                    
                                     Debug.Log("0");
                                     return;
                                 }
@@ -104,7 +121,7 @@ public class PlayerAction : MonoBehaviour
 
                                 for (int i = 0; i < spawnCont; i++)
                                 {
-                                    GameObject itemGO = item[1];
+                                    GameObject itemGO = spawnItem[1];
                                     itemGO.transform.position = transform.position;
                                     Instantiate(itemGO);
                                 }
@@ -178,6 +195,8 @@ public class PlayerAction : MonoBehaviour
                                 }
                             }
                             break;
+
+                            
                     }
 
                     /*  //¶¥Á¥°ÔÇÏ±â
@@ -243,13 +262,13 @@ public class PlayerAction : MonoBehaviour
         return null;
     }
 
-/*    public GameObject ObjectSpawner(GameObject itemGO)
+    public void ObjectSpawner(Tile _tile)
     {
-        for (int i = 0; i < spawnCont; i++)
-        {
-            itemGO = item[]
-            itemGO.transform.position = transform.position;
-            Instantiate(itemGO);
-        }
-    }*/
+            for (int i = 0; i < spawnCont; i++)
+            {
+                GameObject itemGO = LastSpawnItem[_tile];
+                itemGO.transform.position = transform.position;
+                Instantiate(itemGO);
+            }
+    }
 }

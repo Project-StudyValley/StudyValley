@@ -14,6 +14,8 @@ public class InventoryManager : MonoBehaviour
 
     public GameObject mainInventory;
 
+    public Item[] startItems;
+
     private void Awake()
     {
         if (instance == null)
@@ -29,6 +31,10 @@ public class InventoryManager : MonoBehaviour
     private void Start()
     {
         ChangeSelectedSlot(0);
+        foreach (var item in startItems)
+        {
+            AddItem(item);
+        }
     }
 
     private void Update()

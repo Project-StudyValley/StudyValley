@@ -6,25 +6,31 @@ using UnityEngine.Tilemaps;
 [CreateAssetMenu(menuName = "Scriptable object/Item")]
 public class Item : ScriptableObject
 {
-    [Header("Only gameplay")]
+    [Header("ItemType")]
+    public ItemType itemType;
+    
+    [Header("Tool")]
     public ActionType actionType;
 
-    [Header("Only UI")]
+    [Header("Seed")]
+
+
     public bool stackable = true;
 
     [Header("Both")]
     public Sprite image;
 }
 
-//public enum ItemType
-//{
-//    consume,
-//    Tool
-//}
+public enum ItemType
+{
+    NA,
+    consume,
+    Tool
+}
 
 public enum ActionType
 {
-    seed,
+    NA,
     fruit,
     dig,
     water,

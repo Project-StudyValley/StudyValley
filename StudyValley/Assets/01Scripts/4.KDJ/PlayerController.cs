@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
@@ -17,6 +19,18 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private float speed;
+
+    //enum PlayerDirection
+    //{
+    //    up,
+    //    down,
+    //    left,
+    //    right
+    //}
+
+    Vector3 playerDirection;
+    public LayerMask layerMask;
+    Vector2 rayDirection;
 
     // Start is called before the first frame update
     void Awake()
@@ -45,8 +59,27 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-/*        playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * speed * Time.deltaTime;*/
+        rayDirection = new Vector2(transform.position.x, transform.position.y - 0.3f);
+        Debug.DrawRay(rayDirection, playerDirection, new Color(1, 0, 0));
+        RaycastHit2D interactionObject = Physics2D.Raycast(rayDirection, playerDirection, 1f, layerMask);
 
+        if (interactionObject.collider != null)
+        {
+            print(interactionObject.collider.gameObject.name);
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                if (interactionObject.transform.GetChild(0).gameObject.activeInHierarchy)
+                {
+                    interactionObject.transform.GetChild(0).gameObject.SetActive(false);
+                }
+                else
+                {
+                    interactionObject.transform.GetChild(0).gameObject.SetActive(true);
+                }
+            }
+
+        }
+        /*        playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * speed * Time.deltaTime;*/
     }
 
     void FixedUpdate()
@@ -65,7 +98,29 @@ public class PlayerController : MonoBehaviour
             playerAnim.SetFloat("lastMoveY", Input.GetAxisRaw("Vertical"));
         }
 
+        if (horizontal > 0)
+        {
+            playerDirection = Vector3.right;
+        }
+        else if (horizontal < 0)
+        {
+            playerDirection = Vector3.left;
+        }
+        else if (vertical > 0)
+        {
+            playerDirection = Vector3.up;
+        }
+        else if (vertical < 0)
+        {
+            playerDirection = Vector3.down;
+        }
+
         Move();
+       
+        //if (interactionObject.collider.gameObject.layer == 7)
+        //{
+
+        //}
     }
 
     private void Move()

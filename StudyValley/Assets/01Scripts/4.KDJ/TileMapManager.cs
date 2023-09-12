@@ -13,7 +13,6 @@ public class TileMapManager : MonoBehaviour
     [HideInInspector]
     public List<Tile> tiles;
 
-    public List<GameObject> Item;
 
     public List<Tile> hotPepper_Grow_Tile;
     public List<Tile> corn_Grow_Tile;

@@ -259,6 +259,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1842442539659091347, guid: 797e353e59748f145ad8f77d0ba49380, type: 3}
   m_PrefabInstance: {fileID: 563134568}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &224381363 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5827141854523809363, guid: 797e353e59748f145ad8f77d0ba49380, type: 3}
+  m_PrefabInstance: {fileID: 563134568}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224381361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32fa2416098e5c44ba13b225119db3a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &224661335
 GameObject:
   m_ObjectHideFlags: 0
@@ -1632,6 +1643,10 @@ PrefabInstance:
       propertyPath: farmGrid
       value: 
       objectReference: {fileID: 1206457530}
+    - target: {fileID: 2307764469859679311, guid: 797e353e59748f145ad8f77d0ba49380, type: 3}
+      propertyPath: thePlayer
+      value: 
+      objectReference: {fileID: 224381363}
     - target: {fileID: 2307764469859679311, guid: 797e353e59748f145ad8f77d0ba49380, type: 3}
       propertyPath: GrowTileMap
       value: 
@@ -5715,6 +5730,7 @@ MonoBehaviour:
   corn_Tile: {fileID: 11400000, guid: 3a435480ec225464fb62482afaac7c6d, type: 2}
   pumpkin_Tile: {fileID: 11400000, guid: 86046eab9a5b9d346831d096e7751bf7, type: 2}
   tiles: []
+  Item: []
   hotPepper_Grow_Tile:
   - {fileID: 11400000, guid: 0ad0740c74818604ea566dc00531cb8b, type: 2}
   - {fileID: 11400000, guid: 16dbf08b810fb11458c4f8d27f32041b, type: 2}

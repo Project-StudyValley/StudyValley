@@ -22,14 +22,16 @@ public class StartPoint : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        PlayerAction.instance.ResetGrid();
+
         theCamera = FindObjectOfType<CameraManager>();
         thePlayer = FindObjectOfType<PlayerController>();
 
-/*        PlayerAction.instance.ResetGrid();*/
 
         Scene scene = SceneManager.GetActiveScene();
 
         cameraVec3 = startCameraPos.gameObject.transform.position;
+
 
         if (startPoint == thePlayer.currentMapName)
         {

@@ -23,11 +23,10 @@ public class PlayerAction : MonoBehaviour
 
     public int spawnCont;
     public GameObject[] spawnItem;
+
     public Dictionary<Tile, GameObject> LastSpawnItem;
 
     public Item selectedItem;
-
-    public Vector3 scaleVector;
 
     public PlayerController thePlayer;
     public string mainSceneName = "ProtoType_Main";
@@ -51,10 +50,11 @@ public class PlayerAction : MonoBehaviour
 
     private void Start()
     {
-        
-/*        LastSpawnItem.Add(TileMapManager.instance.hotPepper_Grow_Tile[5], spawnItem[0]);
+        LastSpawnItem = new Dictionary<Tile, GameObject>();
+
+        LastSpawnItem.Add(TileMapManager.instance.hotPepper_Grow_Tile[5], spawnItem[0]);
         LastSpawnItem.Add(TileMapManager.instance.corn_Grow_Tile[5], spawnItem[1]);
-        LastSpawnItem.Add(TileMapManager.instance.pumpkin_Grow_Tile[5], spawnItem[2]);*/
+        LastSpawnItem.Add(TileMapManager.instance.pumpkin_Grow_Tile[5], spawnItem[2]);
 
     }
     void Update()
@@ -88,7 +88,7 @@ public class PlayerAction : MonoBehaviour
                                     ToolTileMap.SetTile(grid.WorldToCell(transform.position), ToolTile[2]);
                                     GrowTileMap.SetTile(grid.WorldToCell(transform.position), GrowTile[1]);
 
-                                    SeedTileMap.SetTile(grid.WorldToCell(transform.position), SeedTile[0]);
+                                    //SeedTileMap.SetTile(grid.WorldToCell(transform.position), SeedTile[0]);
                                     //SeedTile[1].GetComponent<Transform>().localScale = Vector2.one * Mathf.Clamp(0, 0, 0);
                                     Debug.Log("0");
                                     return;

@@ -5561,8 +5561,16 @@ PrefabInstance:
       value: 65535
       objectReference: {fileID: 0}
     - target: {fileID: 5083146742783957338, guid: 66bd28242ffd6a74f8d29d2d74d441f4, type: 3}
+      propertyPath: m_SortingLayer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5083146742783957338, guid: 66bd28242ffd6a74f8d29d2d74d441f4, type: 3}
       propertyPath: m_SortingOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5083146742783957338, guid: 66bd28242ffd6a74f8d29d2d74d441f4, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1506099097
       objectReference: {fileID: 0}
     - target: {fileID: 6401503494091179649, guid: 66bd28242ffd6a74f8d29d2d74d441f4, type: 3}
       propertyPath: m_RootOrder
@@ -5607,6 +5615,30 @@ PrefabInstance:
     - target: {fileID: 6401503494091179649, guid: 66bd28242ffd6a74f8d29d2d74d441f4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8169735380482322179, guid: 66bd28242ffd6a74f8d29d2d74d441f4, type: 3}
+      propertyPath: m_SortingLayer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8169735380482322179, guid: 66bd28242ffd6a74f8d29d2d74d441f4, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1506099097
+      objectReference: {fileID: 0}
+    - target: {fileID: 8666225654349737918, guid: 66bd28242ffd6a74f8d29d2d74d441f4, type: 3}
+      propertyPath: m_SortingLayer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8666225654349737918, guid: 66bd28242ffd6a74f8d29d2d74d441f4, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1506099097
+      objectReference: {fileID: 0}
+    - target: {fileID: 9101905598817192651, guid: 66bd28242ffd6a74f8d29d2d74d441f4, type: 3}
+      propertyPath: m_SortingLayer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 9101905598817192651, guid: 66bd28242ffd6a74f8d29d2d74d441f4, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 1506099097
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -6020,7 +6052,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 904815c1871c71743ba55feeed8da5e2, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.05
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0

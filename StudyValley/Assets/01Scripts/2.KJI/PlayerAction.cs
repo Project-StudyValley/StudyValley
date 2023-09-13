@@ -16,10 +16,13 @@ public class PlayerAction : MonoBehaviour
     public Tilemap GrowTileMap;
     public Tilemap SeedTileMap;
     public Tilemap ToolTileMap;
+    public Tilemap WetTileMap;
 
     public List<Tile> GrowTile;
     public List<Tile> SeedTile;
     public List<Tile> ToolTile;
+    public List<Tile> WetTile;
+
 
     public int spawnCont;
     public GameObject[] spawnItem;
@@ -34,7 +37,7 @@ public class PlayerAction : MonoBehaviour
 
     public GameObject farmGrid;
 
-    
+
 
     private void Awake()
     {
@@ -63,7 +66,10 @@ public class PlayerAction : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                selectedItem = InventoryManager.instance.GetSelectedItem(true);
+
+
+                selectedItem = InventoryManager.instance.GetSelectedItem(false);
+
 
                 if (selectedItem != null)
                 {
@@ -81,21 +87,28 @@ public class PlayerAction : MonoBehaviour
 
                             GrowTile = TileMapList(SeedTileMap.GetTile(grid.WorldToCell(transform.position)));
 
-                            if (GrowTileMap.GetTile(grid.WorldToCell(transform.position)) == GrowTile[0])   
+                            try
                             {
-                                if (SeedTileMap.GetTile(grid.WorldToCell(transform.position)) == SeedTile[1])
-                                {
-                                    ToolTileMap.SetTile(grid.WorldToCell(transform.position), ToolTile[2]);
-                                    GrowTileMap.SetTile(grid.WorldToCell(transform.position), GrowTile[1]);
 
-                                    //SeedTileMap.SetTile(grid.WorldToCell(transform.position), SeedTile[0]);
-                                    //SeedTile[1].GetComponent<Transform>().localScale = Vector2.one * Mathf.Clamp(0, 0, 0);
-                                    Debug.Log("0");
-                                    return;
+                                if (GrowTileMap.GetTile(grid.WorldToCell(transform.position)) == GrowTile[0])
+                                {
+                                    if (SeedTileMap.GetTile(grid.WorldToCell(transform.position)) != SeedTile[0])
+                                    {
+                                        ToolTileMap.SetTile(grid.WorldToCell(transform.position), ToolTile[2]);
+                                        GrowTileMap.SetTile(grid.WorldToCell(transform.position), GrowTile[1]);
+                                        WetTileMap.SetTile(grid.WorldToCell(transform.position), WetTile[1]);
+                                        //SeedTileMap.SetTile(grid.WorldToCell(transform.position), SeedTile[0]);
+                                        //SeedTile[1].GetComponent<Transform>().localScale = Vector2.one * Mathf.Clamp(0, 0, 0);
+                                        Debug.Log("0");
+                                    }
                                 }
                             }
+                            catch
+                            {
+                                return;
+                            }
 
-                            else if (GrowTileMap.GetTile(grid.WorldToCell(transform.position)) == GrowTile[1])
+                            if (GrowTileMap.GetTile(grid.WorldToCell(transform.position)) == GrowTile[1])
                             {
                                 GrowTileMap.SetTile(grid.WorldToCell(transform.position), GrowTile[2]);
                                 Debug.Log("1");
@@ -119,13 +132,16 @@ public class PlayerAction : MonoBehaviour
                             {
                                 GrowTileMap.SetTile(grid.WorldToCell(transform.position), GrowTile[0]);
                                 ToolTileMap.SetTile(grid.WorldToCell(transform.position), ToolTile[0]);
+                                WetTileMap.SetTile(grid.WorldToCell(transform.position), WetTile[0]);
+                                SeedTileMap.SetTile(grid.WorldToCell(transform.position), SeedTile[0]);
 
-                                for (int i = 0; i < spawnCont; i++)
-                                {
-                                    GameObject itemGO = spawnItem[1];
-                                    itemGO.transform.position = transform.position;
-                                    Instantiate(itemGO);
-                                }
+                                /*                                for (int i = 0; i < spawnCont; i++)
+                                                                {
+                                                                    GameObject itemGO = spawnItem[1];
+                                                                    itemGO.transform.position = transform.position;
+                                                                    Instantiate(itemGO);
+                                                                }*/
+                                ObjectSpawner(GrowTile[5]);
                                 Debug.Log("5");
 
                             }
@@ -144,6 +160,8 @@ public class PlayerAction : MonoBehaviour
                             break;
 
                         case ActionType.plant1:
+                            selectedItem = InventoryManager.instance.GetSelectedItem(true);
+
                             SeedTile[1] = TileMapManager.instance.hotPepper_Tile;
 
                             if (ToolTileMap.GetTile(grid.WorldToCell(transform.position)) == ToolTile[1])
@@ -161,6 +179,8 @@ public class PlayerAction : MonoBehaviour
                             }
                             break;
                         case ActionType.plant2:
+                            selectedItem = InventoryManager.instance.GetSelectedItem(true);
+
                             SeedTile[1] = TileMapManager.instance.corn_Tile;
 
                             if (ToolTileMap.GetTile(grid.WorldToCell(transform.position)) == ToolTile[1])
@@ -179,6 +199,8 @@ public class PlayerAction : MonoBehaviour
                             }
                             break;
                         case ActionType.plant3:
+                            selectedItem = InventoryManager.instance.GetSelectedItem(true);
+
                             SeedTile[1] = TileMapManager.instance.pumpkin_Tile;
 
                             if (ToolTileMap.GetTile(grid.WorldToCell(transform.position)) == ToolTile[1])
@@ -197,7 +219,7 @@ public class PlayerAction : MonoBehaviour
                             }
                             break;
 
-                            
+
                     }
 
                     /*  //¶¥Á¥°ÔÇÏ±â
@@ -221,7 +243,7 @@ public class PlayerAction : MonoBehaviour
             GameObject.Find("GrowTileMap").GetComponent<Tilemap>();
             GrowTileMap = GameObject.Find("GrowTileMap").GetComponent<Tilemap>();
         }
-        catch(Exception e)
+        catch (Exception e)
         {
             GrowTileMap = null;
         }
@@ -254,10 +276,11 @@ public class PlayerAction : MonoBehaviour
         {
             Debug.Log("123");
             Debug.Log(Vegetavle);
-            
+            Debug.Log(tile);
             if (Vegetavle == tile)
             {
-                Debug.Log(tile);
+
+                Debug.Log("111");
                 return TileMapManager.instance.fruit_Grow[Vegetavle];
             }
         }
@@ -266,11 +289,11 @@ public class PlayerAction : MonoBehaviour
 
     public void ObjectSpawner(Tile _tile)
     {
-            for (int i = 0; i < spawnCont; i++)
-            {
-                GameObject itemGO = LastSpawnItem[_tile];
-                itemGO.transform.position = transform.position;
-                Instantiate(itemGO);
-            }
+        for (int i = 0; i < spawnCont; i++)
+        {
+            GameObject itemGO = LastSpawnItem[_tile];
+            itemGO.transform.position = transform.position;
+            Instantiate(itemGO);
+        }
     }
 }

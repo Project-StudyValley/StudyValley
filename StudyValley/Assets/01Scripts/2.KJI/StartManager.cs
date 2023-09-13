@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEditor;
 
 public class StartManager : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class StartManager : MonoBehaviour
     }
     public void GmaeExit()
     {
-        UnityEditor.EditorApplication.isPlaying = false;
+        /*UnityEditor.EditorApplication.isPlaying = false;*/
         Application.Quit();
     }
 

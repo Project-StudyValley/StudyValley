@@ -5,9 +5,9 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
-public class PlayerController : MonoBehaviour
+public class BaseTilePlayerController : MonoBehaviour
 {
-    private static PlayerController instance;
+    private static BaseTilePlayerController instance;
 
     private Rigidbody2D playerRB;
     private Animator playerAnim;
@@ -21,14 +21,10 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private float speed;
-
-    //enum PlayerDirection
-    //{
-    //    up,
-    //    down,
-    //    left,
-    //    right
-    //}
+    [SerializeField]
+    private MarkerManager markerManager;
+    [SerializeField]
+    TileMapReadController tileMapReadController;
 
     Vector3 playerDirection;
     public LayerMask layerMask;
@@ -61,6 +57,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Marker();
+
+
         rayDirection = new Vector2(transform.position.x, transform.position.y - 0.3f);
         Debug.DrawRay(rayDirection, playerDirection, new Color(1, 0, 0));
         RaycastHit2D interactionObject = Physics2D.Raycast(rayDirection, playerDirection, 1f, layerMask);
@@ -77,20 +76,14 @@ public class PlayerController : MonoBehaviour
                 else
                 {
                     storage.SetActive(true);
-                }
-                //GetComponent<RectTransform>().anchoredPosition
-                //if (interactionObject.transform.GetChild(0).gameObject.activeInHierarchy)
-                //{
-                //    interactionObject.transform.GetChild(0).gameObject.SetActive(false);
-                //}
-                //else
-                //{
-                //    interactionObject.transform.GetChild(0).gameObject.SetActive(true);
-                //}
+                }               
             }
-
         }
-        /*        playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * speed * Time.deltaTime;*/
+    }
+    private void Marker()
+    {
+        Vector3Int gridPosition = tileMapReadController.GetGridPosition(Input.mousePosition, true);
+        markerManager.markedCellPosition = gridPosition;
     }
 
     void FixedUpdate()

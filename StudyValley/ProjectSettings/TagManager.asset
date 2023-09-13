@@ -67,3 +67,6 @@ TagManager:
   - name: InvisibleWall
     uniqueID: 1065731517
     locked: 0
+  - name: Marker
+    uniqueID: 3028457099
+    locked: 0

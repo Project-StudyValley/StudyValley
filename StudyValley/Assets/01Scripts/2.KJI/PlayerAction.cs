@@ -160,6 +160,8 @@ public class PlayerAction : MonoBehaviour
                             break;
 
                         case ActionType.plant1:
+                            selectedItem = InventoryManager.instance.GetSelectedItem(true);
+
                             SeedTile[1] = TileMapManager.instance.hotPepper_Tile;
 
                             if (ToolTileMap.GetTile(grid.WorldToCell(transform.position)) == ToolTile[1])
@@ -177,6 +179,8 @@ public class PlayerAction : MonoBehaviour
                             }
                             break;
                         case ActionType.plant2:
+                            selectedItem = InventoryManager.instance.GetSelectedItem(true);
+
                             SeedTile[1] = TileMapManager.instance.corn_Tile;
 
                             if (ToolTileMap.GetTile(grid.WorldToCell(transform.position)) == ToolTile[1])
@@ -195,6 +199,8 @@ public class PlayerAction : MonoBehaviour
                             }
                             break;
                         case ActionType.plant3:
+                            selectedItem = InventoryManager.instance.GetSelectedItem(true);
+
                             SeedTile[1] = TileMapManager.instance.pumpkin_Tile;
 
                             if (ToolTileMap.GetTile(grid.WorldToCell(transform.position)) == ToolTile[1])

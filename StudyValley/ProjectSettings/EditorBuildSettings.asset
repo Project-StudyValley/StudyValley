@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/00Scenes/ProtoType/StartScean.unity
+    guid: e229a92758ec8aa4b9dc6e592525a03b
+  - enabled: 1
     path: Assets/00Scenes/ProtoType/ProtoType_Main.unity
     guid: 72ee9879dd4cdf747ae17d1269d7edc0
   - enabled: 1
@@ -14,13 +17,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/00Scenes/ProtoType/ProtoType_Home.unity
     guid: 7b9437cb43a5e7841b69011f2979880e
-  - enabled: 1
-    path: Assets/00Scenes/4.KDJ/MainScene.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
-  - enabled: 1
-    path: Assets/00Scenes/4.KDJ/ShopScene.unity
-    guid: d21b2636a29dc07439da2a6a099058f9
-  - enabled: 1
-    path: Assets/00Scenes/4.KDJ/HomeScene.unity
-    guid: 60988bd3c4b5fc34cb128b681724172f
   m_configObjects: {}

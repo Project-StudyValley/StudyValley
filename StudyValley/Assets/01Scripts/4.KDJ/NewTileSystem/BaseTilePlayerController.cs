@@ -59,7 +59,6 @@ public class BaseTilePlayerController : MonoBehaviour
     {
         Marker();
 
-
         rayDirection = new Vector2(transform.position.x, transform.position.y - 0.3f);
         Debug.DrawRay(rayDirection, playerDirection, new Color(1, 0, 0));
         RaycastHit2D interactionObject = Physics2D.Raycast(rayDirection, playerDirection, 1f, layerMask);
@@ -120,11 +119,6 @@ public class BaseTilePlayerController : MonoBehaviour
         }
 
         Move();
-       
-        //if (interactionObject.collider.gameObject.layer == 7)
-        //{
-
-        //}
     }
 
     private void Move()

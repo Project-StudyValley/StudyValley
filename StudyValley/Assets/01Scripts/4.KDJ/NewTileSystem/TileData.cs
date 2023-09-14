@@ -8,6 +8,6 @@ public class TileData : ScriptableObject
 {
     public List<TileBase> tiles;
 
-    public bool plaowble;
+    public bool plowable;
 }
 

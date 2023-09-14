@@ -66,10 +66,7 @@ public class PlayerAction : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-
-
                 selectedItem = InventoryManager.instance.GetSelectedItem(false);
-
 
                 if (selectedItem != null)
                 {
@@ -210,7 +207,6 @@ public class PlayerAction : MonoBehaviour
                                 {
                                     SeedTileMap.SetTile(grid.WorldToCell(transform.position), SeedTile[1]);
                                     Debug.Log("pumpkin");
-
                                 }
                                 else
                                 {

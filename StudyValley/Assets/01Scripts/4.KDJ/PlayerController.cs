@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     public string currentMapName;
 
     public GameObject storage;
+    public GameObject storeNpc;
 
     [SerializeField]
     private float speed;
@@ -67,26 +68,29 @@ public class PlayerController : MonoBehaviour
 
         if (interactionObject.collider != null)
         {
+            Debug.Log("1");
             print(interactionObject.collider.gameObject.name);
             if (Input.GetKeyDown(KeyCode.E))
             {
-                if (storage.activeSelf)
-                {
-                    storage.SetActive(false);
-                }
-                else
-                {
-                    storage.SetActive(true);
-                }
-                //GetComponent<RectTransform>().anchoredPosition
-                //if (interactionObject.transform.GetChild(0).gameObject.activeInHierarchy)
+                //if (storage.activeSelf)
                 //{
-                //    interactionObject.transform.GetChild(0).gameObject.SetActive(false);
+                //    storage.SetActive(false);
                 //}
                 //else
                 //{
-                //    interactionObject.transform.GetChild(0).gameObject.SetActive(true);
+                //    storage.SetActive(true);
                 //}
+                //GetComponent<RectTransform>().anchoredPosition
+                if (interactionObject.transform.GetChild(0).gameObject.activeInHierarchy)
+                {
+                    interactionObject.transform.GetChild(0).gameObject.SetActive(false);
+                }
+                else
+                {
+                    interactionObject.transform.GetChild(0).gameObject.SetActive(true);
+                }
+
+
             }
 
         }

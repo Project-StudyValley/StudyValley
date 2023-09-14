@@ -43,7 +43,27 @@ public class InventoryManager : MonoBehaviour
                 ChangeSelectedSlot(number - 1);
             }
         }
+<<<<<<< Updated upstream
+=======
+
+
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            if (!mainInventory.activeSelf)
+            {
+                mainInventory.SetActive(mainInventory.activeSelf);
+            }
+        }
+        else
+        {
+
+        }
+
+
+>>>>>>> Stashed changes
     }
+
+
 
     void ChangeSelectedSlot(int newValue)
     {

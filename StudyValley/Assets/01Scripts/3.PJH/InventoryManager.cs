@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UIElements;
 using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
@@ -11,8 +12,16 @@ public class InventoryManager : MonoBehaviour
     public GameObject inventoryItemPrefab;
 
     int selectedSlot = -1;
+    
+    public GameObject mainInventoryGroup;
 
+    //부모위치선정
+    //public Transform mainInventory;
     public GameObject mainInventory;
+    public GameObject toolBar;
+
+    //이동할툴바슬롯들
+    public GameObject[] toolBarSlots;
 
     public Item[] startItems;
 
@@ -52,9 +61,21 @@ public class InventoryManager : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.I))
+        // 툴바 인벤토리 동기화        
+        if (InventoryManager.instance.mainInventoryGroup.activeSelf)
         {
-            mainInventory.SetActive(!mainInventory.activeSelf);
+            foreach (var item in inventorySlots)
+            {
+                item.transform.SetParent(mainInventory.transform);
+                item.transform.SetAsLastSibling();
+            }
+        }
+        else
+        {
+            foreach (var slot in toolBarSlots)
+            {
+                slot.transform.SetParent(toolBar.transform);
+            }
         }
     }
 

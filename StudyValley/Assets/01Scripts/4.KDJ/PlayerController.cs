@@ -104,30 +104,11 @@ public class PlayerController : MonoBehaviour
         float vertical = Input.GetAxisRaw("Vertical");
 
         vec2 = new Vector2(horizontal, vertical);
-        playerAnim.SetFloat("moveX", horizontal);
-        playerAnim.SetFloat("moveY", vertical);
-
+       
         if (Input.GetAxisRaw("Horizontal") == 1 || Input.GetAxisRaw("Horizontal") == -1 || Input.GetAxisRaw("Vertical") == 1 || Input.GetAxisRaw("Vertical") == -1)
         {
             playerAnim.SetFloat("lastMoveX", Input.GetAxisRaw("Horizontal"));
             playerAnim.SetFloat("lastMoveY", Input.GetAxisRaw("Vertical"));
-        }
-
-        if (horizontal > 0)
-        {
-            playerDirection = Vector3.right;
-        }
-        else if (horizontal < 0)
-        {
-            playerDirection = Vector3.left;
-        }
-        else if (vertical > 0)
-        {
-            playerDirection = Vector3.up;
-        }
-        else if (vertical < 0)
-        {
-            playerDirection = Vector3.down;
         }
 
         Move();

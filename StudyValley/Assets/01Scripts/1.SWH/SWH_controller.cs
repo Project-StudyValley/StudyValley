@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SWH_Controller : MonoBehaviour
 {
-   
+
     private Rigidbody2D playerRB;
     private Animator[] partsAnim;
     private BoxCollider2D boxCollider;
@@ -14,7 +14,7 @@ public class SWH_Controller : MonoBehaviour
     [SerializeField]
     private float speed;
 
-    
+
     public int hairAnimNum = 0;
     public int faceAnimNum = 0;
     public int bodyAnimNum = 0;
@@ -31,7 +31,7 @@ public class SWH_Controller : MonoBehaviour
     {
         playerRB = GetComponent<Rigidbody2D>();
         partsAnim = GetComponentsInChildren<Animator>();
-        
+
         this.transform.SetParent(null);
         DontDestroyOnLoad(this.gameObject);
 
@@ -61,6 +61,9 @@ public class SWH_Controller : MonoBehaviour
             }
         }
 
+
+
+       
         if (hairAnimNum != 0)
         {
             hairTempAnimNum = hairAnimNum;  // 임시 변수에 값을 저장

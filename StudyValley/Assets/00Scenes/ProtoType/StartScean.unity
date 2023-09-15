@@ -433,7 +433,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 608626242}
         m_TargetAssemblyTypeName: StartManager, Assembly-CSharp
-        m_MethodName: GmaeExit
+        m_MethodName: OnButtonClickExit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -492,6 +492,7 @@ GameObject:
   - component: {fileID: 608626244}
   - component: {fileID: 608626243}
   - component: {fileID: 608626242}
+  - component: {fileID: 608626245}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -511,7 +512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1bef0ed9e2a0ad47901082a53ff35da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneToLoad: ProtoType_Main
+  SceneToLoad: Opening
   GameExit: 
 --- !u!114 &608626243
 MonoBehaviour:
@@ -525,7 +526,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8bb21f8a04f2174f9baf498975cf250, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAction: 0
 --- !u!4 &608626244
 Transform:
   m_ObjectHideFlags: 0
@@ -541,6 +541,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &608626245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 608626241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29dc97bc74ebd9047abe79ca7973cfad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAction: 0
 --- !u!1 &782257469
 GameObject:
   m_ObjectHideFlags: 0
@@ -975,8 +988,6 @@ GameObject:
   - component: {fileID: 1159461032}
   - component: {fileID: 1159461031}
   - component: {fileID: 1159461030}
-  - component: {fileID: 1159461029}
-  - component: {fileID: 1159461028}
   m_Layer: 5
   m_Name: StratButton
   m_TagString: Untagged
@@ -1004,33 +1015,6 @@ RectTransform:
   m_AnchoredPosition: {x: -133, y: -231}
   m_SizeDelta: {x: 300, y: 240}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1159461028
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1159461026}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1bef0ed9e2a0ad47901082a53ff35da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SceneToLoad: 
-  GameExit: 
---- !u!114 &1159461029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1159461026}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8bb21f8a04f2174f9baf498975cf250, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isAction: 0
 --- !u!114 &1159461030
 MonoBehaviour:
   m_ObjectHideFlags: 0

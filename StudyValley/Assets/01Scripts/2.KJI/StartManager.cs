@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEditor;
+using JetBrains.Annotations;
+using Unity.VisualScripting;
 
 public class StartManager : MonoBehaviour
 {
@@ -13,10 +15,12 @@ public class StartManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneToLoad);
     }
-    public void GmaeExit()
+    public void OnButtonClickExit()
     {
         /*UnityEditor.EditorApplication.isPlaying = false;*/
+        
         Application.Quit();
+        Debug.Log("Exit");
     }
 
 }

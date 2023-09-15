@@ -12,6 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9f1cf85e1ec3f4479b9cac62a27280b, type: 3}
   m_Name: seed_Corn
   m_EditorClassIdentifier: 
-  actionType: 5
+  Name: Seed_Corn
   stackable: 1
   image: {fileID: -2020283776, guid: 6af4dd6fd4c23be45bf7ce62f180fd93, type: 3}
+  onAction: {fileID: 0}
+  onTileMapAction: {fileID: 11400000, guid: e622fad6ce4684c4285d05cfada9f1ef, type: 2}
+  onItemUsed: {fileID: 11400000, guid: e622fad6ce4684c4285d05cfada9f1ef, type: 2}
+  crop: {fileID: 0}
+  itemType: 0
+  actionType: 0
+  durability: 10
+  price: 1
+  regain: 1

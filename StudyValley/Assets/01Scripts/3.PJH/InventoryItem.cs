@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using Unity.VisualScripting;
+using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -11,7 +13,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public Text countText;
 
     [HideInInspector] public Transform parentAfterDrag;
-    [HideInInspector] public int count = 1;
+    [HideInInspector] public int myCount = 1;
     [HideInInspector] public Item item;
 
     public void InitialiseItem(Item newItem)
@@ -23,11 +25,29 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         RefreshCount();
     }
 
+    public void SetCount(int count)
+    {
+        myCount = count;
+    }
+
     public void RefreshCount()
     {
-        countText.text = count.ToString();
-        bool textActive = count > 1;
+        countText.text = myCount.ToString();
+        bool textActive = myCount > 1;
         countText.gameObject.SetActive(textActive);
+
+        /*        countText.gameObject.SetActive(true);
+                image.sprite = slot.item.image;
+
+                if(slot.item.stackable == true)
+                {
+                    countText.gameObject.SetActive(true);
+                    countText.text = slot.count.ToString();
+                }
+                else
+                {
+                    countText.gameObject.SetActive(false);
+                }*/
     }
 
     public void OnBeginDrag(PointerEventData eventData)

@@ -9,12 +9,15 @@ public class InventoryManager : MonoBehaviour
     public int maxStackedItems = 4;
     public InventorySlot[] inventorySlots;
     public GameObject inventoryItemPrefab;
+    
 
     int selectedSlot = -1;
 
     public GameObject mainInventory;
 
     public Item[] startItems;
+    public ItemContainers itemContainers;
+
 
     private void Awake()
     {
@@ -31,6 +34,11 @@ public class InventoryManager : MonoBehaviour
     private void Start()
     {
         ChangeSelectedSlot(0);
+        /*       foreach (ItemSlot slot in itemContainers.slots)
+               {
+                   Item item = slot.item;
+                   AddItem(item);
+               }*/
         foreach (var item in startItems)
         {
             AddItem(item);
@@ -61,6 +69,7 @@ public class InventoryManager : MonoBehaviour
     void ChangeSelectedSlot(int newValue)
     {
         if (selectedSlot >= 0)
+
         {
             inventorySlots[selectedSlot].Deselect();
         }
@@ -76,10 +85,10 @@ public class InventoryManager : MonoBehaviour
             InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
             if (itemInSlot != null &&
                 itemInSlot.item == item &&
-                itemInSlot.count < maxStackedItems &&
+                itemInSlot.myCount < maxStackedItems &&
                 itemInSlot.item.stackable == true)
             {
-                itemInSlot.count++;
+                itemInSlot.myCount++;
                 itemInSlot.RefreshCount();
                 return true;
             }
@@ -117,8 +126,8 @@ public class InventoryManager : MonoBehaviour
 
             if (use == true)
             {
-                itemInSlot.count--;
-                if (itemInSlot.count <= 0)
+                itemInSlot.myCount--;
+                if (itemInSlot.myCount <= 0)
                 {
                     Destroy(itemInSlot.gameObject);
                 }

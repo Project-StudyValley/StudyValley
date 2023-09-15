@@ -3,17 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using Unity.VisualScripting;
 
 public class InventorySlot : MonoBehaviour, IDropHandler
 {
-    public Image image;
-    public Sprite selectedSprite, notSelectedSprite;
+    [SerializeField]
+    private Image image;
+    [SerializeField]
+    private Sprite selectedSprite, notSelectedSprite;
+
 
     public void Select()
     {
         image.sprite = selectedSprite;
     }
-
+    
     public void Deselect()
     {
         image.sprite = notSelectedSprite;

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9f1cf85e1ec3f4479b9cac62a27280b, type: 3}
+  m_Name: Stone
+  m_EditorClassIdentifier: 
+  Name: 
+  stackable: 1
+  image: {fileID: 1441732602, guid: 5b42d04e2a088ff41be3eda996083fa4, type: 3}
+  onAction: {fileID: 0}
+  itemType: 0
+  actionType: 0
+  durability: 10
+  price: 1
+  regain: 1

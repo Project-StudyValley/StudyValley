@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc8cd60614c785644ab3a9f5b9dccdbe, type: 3}
+  m_Name: Item Containers
+  m_EditorClassIdentifier: 
+  slots:
+  - item: {fileID: 11400000, guid: 1b39fed11897391418a7f6e35c461a96, type: 2}
+    count: 1
+  - item: {fileID: 11400000, guid: a773054589f0f384aa07207622ba6b55, type: 2}
+    count: 1
+  - item: {fileID: 11400000, guid: cb2da3e631ca8c240b9d9f6576cf145f, type: 2}
+    count: 10
+  - item: {fileID: 11400000, guid: 4dfe332afdb2ba8459a7d553edaef37e, type: 2}
+    count: 10
+  - item: {fileID: 11400000, guid: 2f08b6a412bf62d49988486d7194df84, type: 2}
+    count: 10
+  - item: {fileID: 11400000, guid: e56b8c355eabb9248a97647771fd3b3c, type: 2}
+    count: 4
+  - item: {fileID: 11400000, guid: cdf4974ec38d73f42900479964d66f58, type: 2}
+    count: 1
+  - item: {fileID: 0}
+    count: 0
+  - item: {fileID: 0}
+    count: 0
+  - item: {fileID: 0}
+    count: 0
+  - item: {fileID: 0}
+    count: 0
+  - item: {fileID: 0}
+    count: 0
+  - item: {fileID: 0}
+    count: 0
+  - item: {fileID: 0}
+    count: 0
+  - item: {fileID: 0}
+    count: 0
+  - item: {fileID: 0}
+    count: 0
+  - item: {fileID: 0}
+    count: 0
+  - item: {fileID: 0}
+    count: 0
+  - item: {fileID: 0}
+    count: 0
+  - item: {fileID: 0}
+    count: 0
+  - item: {fileID: 0}
+    count: 0
+  - item: {fileID: 0}
+    count: 0
+  - item: {fileID: 0}
+    count: 0
+  - item: {fileID: 0}
+    count: 0
+  - item: {fileID: 0}
+    count: 0
+  - item: {fileID: 0}
+    count: 0
+  - item: {fileID: 0}
+    count: 0
+  - item: {fileID: 0}
+    count: 0
+  - item: {fileID: 0}
+    count: 0
+  - item: {fileID: 0}
+    count: 0
+  isDirty: 1

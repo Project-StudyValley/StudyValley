@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 
 public class Crops
 {
-
+     
 }
 
 public class CropsManager : MonoBehaviour
@@ -17,7 +17,9 @@ public class CropsManager : MonoBehaviour
     [SerializeField]
     private TileBase seeded;
     [SerializeField]
-    private Tilemap targetTilemap;
+    private Tilemap seededTilemap;
+    [SerializeField]
+    private Tilemap plowedTilemap;
 
     Dictionary<Vector2Int, Crops> crops;
 
@@ -43,7 +45,7 @@ public class CropsManager : MonoBehaviour
 
     public void Seed(Vector3Int position)
     {
-        targetTilemap.SetTile(position, seeded);
+        seededTilemap.SetTile(position, seeded);
     }
 
     private void CreatePlowedTile(Vector3Int position)
@@ -51,6 +53,6 @@ public class CropsManager : MonoBehaviour
         Crops crop = new Crops();
         crops.Add((Vector2Int)position, crop);
 
-        targetTilemap.SetTile(position, plowed);
+        plowedTilemap.SetTile(position, plowed);
     } 
 }

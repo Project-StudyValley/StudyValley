@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -10,6 +11,9 @@ public class Item : ScriptableObject
     public bool stackable = true;
     public Sprite image;
     public ToolAction onAction;
+    public ToolAction onTileMapAction;
+    public ToolAction onItemUsed;
+    public Crop crop;
 
     public ItemType itemType;      
     public ActionType actionType;    
@@ -22,9 +26,9 @@ public class Item : ScriptableObject
 public enum ItemType
 {
     None,
-    tool,
-    seed,
-    food
+    Tool,
+    Seed,
+    Food,
 }
 
 public enum ActionType

@@ -348,7 +348,7 @@ Transform:
   - {fileID: 291850038660326625}
   - {fileID: 418186620445021698}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2996385719676749222
 MonoBehaviour:
@@ -365,7 +365,8 @@ MonoBehaviour:
   pickUpDrop: {fileID: 2200014125984893456, guid: d6f364cfe13ff2d45a119aa876564f41, type: 3}
   dropCount: 5
   spread: 0.3
-  position: {x: -50, y: -10}
+  item: {fileID: 11400000, guid: bdd746cae395432409530de6760c218d, type: 2}
+  nodeType: 1
 --- !u!70 &5536881574730663211
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -398,6 +399,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.08338928, y: 0.34944367}
-  m_Size: {x: 0.98107433, y: 2.3463264}
+  m_Offset: {x: -0.083389044, y: -0.016221642}
+  m_Size: {x: 0.75721407, y: 1.6149957}
   m_Direction: 0

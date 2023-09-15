@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UIElements;
 
 public class ToolPlayerController : MonoBehaviour
 {
@@ -18,8 +19,6 @@ public class ToolPlayerController : MonoBehaviour
     private TileMapReadController tileMapReadController;
     [SerializeField]
     private float maxDistance = 1.5f;
-    [SerializeField]
-    private CropsManager cropsManager;
     [SerializeField]
     private TileData plowableTiles;
 
@@ -74,7 +73,7 @@ public class ToolPlayerController : MonoBehaviour
     {
         Vector2 position = rgdb2D.position + playerCnt.lastMotionVector * offsetDistance;
 
-        Item selectedItem = InventoryManager.instance.GetSelectedItem(true);
+        Item selectedItem = InventoryManager.instance.GetSelectedItem(false);
         if (selectedItem == null)
         {
             return false;
@@ -83,29 +82,43 @@ public class ToolPlayerController : MonoBehaviour
         {
             return false;
         }
-
+        //animator.SetTrigger("act");<- 상호작용 애니메이션 삽입
         bool complete = selectedItem.onAction.OnApply(position);
+
+        if (complete == true)
+        {
+            if (selectedItem.onItemUsed != null)
+            {
+                selectedItem.onItemUsed.OnItemUsed(selectedItem, GameManager.instance.inventoryContainer);
+            }
+        }
 
         return complete;
     }
-
+        
     private void UseToolGrid()
     {
         if (selectable == true)
         {
-            TileBase tileBase = tileMapReadController.GetTileBase(selectedTilePosition);
-            TileData tileData = tileMapReadController.GetTileData(tileBase);
-            if (tileData != plowableTiles)
+            Item selectedItem = InventoryManager.instance.GetSelectedItem(false);
+            if (selectedItem == null)
             {
                 return;
             }
-            if (cropsManager.Check(selectedTilePosition))
+            if (selectedItem.onTileMapAction == null)
             {
-                cropsManager.Seed(selectedTilePosition);
+                return;
             }
-            else
+
+            //animator.SetTrigger("act");<- 상호작용 애니메이션 삽입
+            bool complete = selectedItem.onTileMapAction.OnApplyToTileMap(selectedTilePosition, tileMapReadController);
+
+            if (complete == true)
             {
-                cropsManager.Plow(selectedTilePosition);
+                if (selectedItem.onItemUsed != null)
+                {
+                    selectedItem.onItemUsed.OnItemUsed(selectedItem, InventoryManager.instance.itemContainers);
+                }
             }
         }
     }

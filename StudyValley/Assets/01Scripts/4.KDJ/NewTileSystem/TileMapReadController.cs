@@ -5,14 +5,16 @@ using UnityEngine.Tilemaps;
 
 public class TileMapReadController : MonoBehaviour
 {
-    [SerializeField]
-    Tilemap tilemap;
-    [SerializeField]
-    List<TileData> tileDatas;
+    public CropsManager cropsManager;
 
-    Dictionary<TileBase, TileData> dataFromTiles;
+    [SerializeField]
+    private Tilemap tilemap;
+/*    [SerializeField]
+    private List<TileData> tileDatas;
 
-    private void Start()
+    Dictionary<TileBase, TileData> dataFromTiles;*/
+
+/*    private void Start()
     {
         dataFromTiles = new Dictionary<TileBase, TileData>();
 
@@ -23,7 +25,7 @@ public class TileMapReadController : MonoBehaviour
                 dataFromTiles.Add(tile, tileData);
             }
         }
-    }
+    }*/
 
     private void Update()
     {
@@ -59,8 +61,8 @@ public class TileMapReadController : MonoBehaviour
         return tile;
     }
 
-    public TileData GetTileData(TileBase tilebase)
+/*    public TileData GetTileData(TileBase tilebase)
     {
         return dataFromTiles[tilebase];
-    }
+    }*/
 }

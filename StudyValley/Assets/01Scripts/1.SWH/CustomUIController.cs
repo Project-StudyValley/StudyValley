@@ -28,7 +28,12 @@ public class CustomUIController : MonoBehaviour
 
     void Start()
     {
+        if (playerController == null)
+        {
+            playerController = FindObjectOfType<SWH_Controller2>();
+        }
         UpdateAnimText();
+        
     }
 
     public void IncreaseHairAnim()

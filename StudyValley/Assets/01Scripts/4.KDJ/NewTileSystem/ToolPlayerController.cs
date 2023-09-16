@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using UnityEngine.UIElements;
-using static SWH_Controller2;
+using static PlayerController_Beta;
 
 public class ToolPlayerController : MonoBehaviour
 {
-    private SWH_Controller2 playerCnt;
+    private PlayerController_Beta playerCnt;
     private Rigidbody2D rgdb2D;
     private Animator animator;
+
+    public InventoryManager inventoryManager;
+    public Item[] itemsToPickup;
 
     [SerializeField]
     private float offsetDistance = 1f;
@@ -24,16 +26,15 @@ public class ToolPlayerController : MonoBehaviour
     [SerializeField]
     private TileData plowableTiles;
 
-    InventorySlot inventorySlot;
+    InventorySlot[] inventorySlot;
 
     private Vector3Int selectedTilePosition;
     private bool selectable;
 
     private void Awake()
     {
-        playerCnt = GetComponent<SWH_Controller2>();
+        playerCnt = GetComponent<PlayerController_Beta>();
         rgdb2D = GetComponent<Rigidbody2D>();
-        inventorySlot = GetComponent<InventorySlot>();
         animator = GetComponent<Animator>();
     }
 
@@ -76,26 +77,27 @@ public class ToolPlayerController : MonoBehaviour
     {
         Vector2 position = rgdb2D.position + playerCnt.movement * offsetDistance;
 
-        Item selectedItem = InventoryManager.instance.GetSelectedItem(true);
+        Item selectedItem = InventoryManager.instance.GetSelectedItem(false);
         if (selectedItem == null)
         {
             return false;
         }
-        if (selectedItem.onAction == null)
+        bool complete = false;
+        if (selectedItem.durability >= 1 && selectedItem.onAction != null)
         {
-            return false;
-        }
-        //animator.SetTrigger("act");<- 상호작용 애니메이션 삽입
-        playerCnt.currentState = PlayerState.Action;
-        StartCoroutine(playerCnt.ActionStateCooldown());
-        print("액션");
-        bool complete = selectedItem.onAction.OnApply(position);
+            //animator.SetTrigger("act");<- 상호작용 애니메이션 삽입
+            playerCnt.currentState = PlayerState.Action;
+            StartCoroutine(playerCnt.ActionStateCooldown());
+            print("액션1");
+            complete = selectedItem.onAction.OnApply(position);
 
-        if (complete == true)
-        {
-            if (selectedItem.onItemUsed != null)
+            if (complete == true && selectedItem.itemType == ItemType.tool)
             {
-                selectedItem.onItemUsed.OnItemUsed(selectedItem, GameManager.instance.inventoryContainer);
+                selectedItem.DecreaseDurability();
+                if (selectedItem.onItemUsed != null)
+                {
+                    selectedItem.onItemUsed.OnItemUsed(selectedItem, inventoryManager);
+                }
             }
         }
 
@@ -106,28 +108,28 @@ public class ToolPlayerController : MonoBehaviour
     {
         if (selectable == true)
         {
-            Item selectedItem = InventoryManager.instance.GetSelectedItem(false);
+            Item selectedItem = InventoryManager.instance.GetSelectedItem(true);
 
             if (selectedItem == null)
             {
                 return;
             }
-            if (selectedItem.onTileMapAction == null)
+            bool complete = false;
+            if (selectedItem.durability >= 1 && selectedItem.onTileMapAction != null)
             {
-                return;
-            }
+                playerCnt.currentState = PlayerState.Action;
+                StartCoroutine(playerCnt.ActionStateCooldown());
+                print("액션2");
+                complete = selectedItem.onTileMapAction.OnApplyToTileMap(selectedTilePosition, tileMapReadController, selectedItem);
 
-            //animator.SetTrigger("act");<- 상호작용 애니메이션 삽입
-            playerCnt.currentState = PlayerState.Action;
-            StartCoroutine(playerCnt.ActionStateCooldown());
-            print("액션");
-            bool complete = selectedItem.onTileMapAction.OnApplyToTileMap(selectedTilePosition, tileMapReadController, selectedItem);
-
-            if (complete == true)
-            {
-                if (selectedItem.onItemUsed != null)
+                if (complete == true && selectedItem.itemType == ItemType.tool)
                 {
-                    selectedItem.onItemUsed.OnItemUsed(selectedItem, GameManager.instance.inventoryContainer);
+                    selectedItem.DecreaseDurability();
+                    Debug.Log("내구도 감소");
+                    if (selectedItem.onItemUsed != null)
+                    {
+                        selectedItem.onItemUsed.OnItemUsed(selectedItem, inventoryManager);
+                    }
                 }
             }
         }

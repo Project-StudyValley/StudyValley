@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class PlayerData : MonoBehaviour
 {
-    public string name;
-    public int itam;
+    //public string name;
+    //public int itam;
 }

@@ -17,8 +17,10 @@ MonoBehaviour:
   image: {fileID: -145801793, guid: 590fb40dbd009f64d9906c388aa17637, type: 3}
   onAction: {fileID: 0}
   onTileMapAction: {fileID: 11400000, guid: c0ac6577cade7f646b5662b658f45ba0, type: 2}
+  onItemUsed: {fileID: 0}
+  crop: {fileID: 0}
   itemType: 1
   actionType: 2
-  durability: 10
+  durability: 1
   price: 1
   regain: 1

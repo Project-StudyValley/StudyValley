@@ -18,7 +18,7 @@ public class SeedTile : ToolAction
 
     }
 
-    public override bool OnItemUsed(Item usedItem, ItemContainers inventory)
+    public override bool OnItemUsed(Item usedItem, InventoryManager inventory)
     {
         inventory.RemoveItem(usedItem);
         return true;

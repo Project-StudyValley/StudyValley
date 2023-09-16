@@ -19,6 +19,16 @@ public class Item : ScriptableObject
     public int durability = 10;
     public int price = 1;
     public int regain = 1;
+
+    public void DecreaseDurability(int amount = 1)
+    {
+        durability -= amount;
+        if(durability <= 0)
+        {
+            Debug.Log("³»±¸µµ");
+            InventoryManager.instance.RemoveItem(this);
+        }
+    }
 }
 
 public enum ItemType

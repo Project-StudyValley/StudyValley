@@ -15,8 +15,7 @@ public class InventoryManager : MonoBehaviour
     
     public GameObject mainInventoryGroup;
 
-    //부모위치선정
-    //public Transform mainInventory;
+    //부모위치선정  
     public GameObject mainInventory;
     public GameObject toolBar;
 

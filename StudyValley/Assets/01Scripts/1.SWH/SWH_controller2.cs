@@ -150,11 +150,11 @@ public class SWH_Controller2 : MonoBehaviour
                     anim.Play(animPrefix + "Idle" + direction, 0);
                     break;
                 case PlayerState.Move:
-                    //Debug.Log(animPrefix + "Walk"  + direction);
+                    Debug.Log(animPrefix + "Walk"  + direction);
                     anim.Play(animPrefix + "Walk"  + direction, 0);
                     break;
                 case PlayerState.Action:
-                    //Debug.Log(animPrefix + "Action" + direction);
+                    Debug.Log(animPrefix + "Action" + direction);
                     anim.Play(animPrefix + "Action"  + direction, 0);
                     break;
                 default:

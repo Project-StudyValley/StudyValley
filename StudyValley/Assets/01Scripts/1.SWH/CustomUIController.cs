@@ -18,7 +18,7 @@ public class CustomUIController : MonoBehaviour
                 maxTopAnimNum = 3,
                 maxBottomAnimNum = 3;
 
-    public SWH_Controller swhController; // SWH_Controller 스크립트에 대한 참조
+    public SWH_Controller2 playerController;
 
     private int currentHairAnimNum = 1,
                 currentFaceAnimNum = 1,
@@ -34,56 +34,56 @@ public class CustomUIController : MonoBehaviour
     public void IncreaseHairAnim()
     {
         ChangeAnimNum(ref currentHairAnimNum, maxHairAnimNum);
-        swhController.hairAnimNum = currentHairAnimNum;
+        playerController.hairAnimNum = currentHairAnimNum;
     }
 
     public void DecreaseHairAnim()
     {
         ChangeAnimNum(ref currentHairAnimNum, maxHairAnimNum, false);
-        swhController.hairAnimNum = currentHairAnimNum;
+        playerController.hairAnimNum = currentHairAnimNum;
     }
 
     // 다른 파트의 애니메이션 숫자를 변경하는 함수들
     public void IncreaseFaceAnim()
     {
         ChangeAnimNum(ref currentFaceAnimNum, maxFaceAnimNum);
-        swhController.faceAnimNum = currentFaceAnimNum;
+        playerController.faceAnimNum = currentFaceAnimNum;
     }
     public void DecreaseFaceAnim()
     {
         ChangeAnimNum(ref currentFaceAnimNum, maxFaceAnimNum, false);
-        swhController.faceAnimNum = currentFaceAnimNum;
+        playerController.faceAnimNum = currentFaceAnimNum;
     }
 
     public void IncreaseBodyAnim()
     { ChangeAnimNum(ref currentBodyAnimNum, maxBodyAnimNum);
-        swhController.bodyAnimNum = currentBodyAnimNum;
+        playerController.bodyAnimNum = currentBodyAnimNum;
     }
     public void DecreaseBodyAnim()
     { ChangeAnimNum(ref currentBodyAnimNum, maxBodyAnimNum, false);
-        swhController.bodyAnimNum = currentBodyAnimNum;
+        playerController.bodyAnimNum = currentBodyAnimNum;
     }
 
     public void IncreaseTopAnim()
     {
         ChangeAnimNum(ref currentTopAnimNum, maxTopAnimNum);
-        swhController.topAnimNum = currentTopAnimNum;
+        playerController.topAnimNum = currentTopAnimNum;
     }
     public void DecreaseTopAnim()
     {
         ChangeAnimNum(ref currentTopAnimNum, maxTopAnimNum, false);
-        swhController.topAnimNum = currentTopAnimNum;
+        playerController.topAnimNum = currentTopAnimNum;
     }
 
     public void IncreaseBottomAnim()
     {
         ChangeAnimNum(ref currentBottomAnimNum, maxBottomAnimNum);
-        swhController.bottomAnimNum = currentBottomAnimNum;
+        playerController.bottomAnimNum = currentBottomAnimNum;
     }
     public void DecreaseBottomAnim()
     {
         ChangeAnimNum(ref currentBottomAnimNum, maxBottomAnimNum, false);
-        swhController.bottomAnimNum = currentBottomAnimNum;
+        playerController.bottomAnimNum = currentBottomAnimNum;
     }
 
     // 애니메이션 숫자를 증가 또는 감소시키는 보조 함수

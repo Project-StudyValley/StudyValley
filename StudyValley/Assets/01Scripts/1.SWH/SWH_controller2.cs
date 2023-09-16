@@ -57,25 +57,29 @@ public class SWH_Controller2 : MonoBehaviour
 
     private void PlayerMovement()
     {
+        if (currentState == PlayerState.Action)
+        {
+            playerRB.velocity = Vector2.zero; // 액션 상태일 때 이동을 중지
+            return; // 함수를 빠져나가 키 입력을 무시
+        }
+
         float horizontal = Input.GetAxisRaw("Horizontal");
         float vertical = Input.GetAxisRaw("Vertical");
 
         moveX = horizontal;
         moveY = vertical;
-        if (currentState != PlayerState.Action)
+
+        if (Input.GetButtonDown("Horizontal") || Input.GetButtonDown("Vertical"))
         {
-            if (Input.GetButtonDown("Horizontal") || Input.GetButtonDown("Vertical"))
+            currentState = PlayerState.Move;
+            print("이동 중");
+        }
+        else if (Input.GetButtonUp("Horizontal") || Input.GetButtonUp("Vertical"))
+        {
+            if (Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") == 0)
             {
-                currentState = PlayerState.Move;
-                print("이동 중");
-            }
-            else if (Input.GetButtonUp("Horizontal") || Input.GetButtonUp("Vertical"))
-            {
-                if (Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") == 0)
-                {
-                    currentState = PlayerState.Idle;
-                    print("정지상태");
-                }
+                currentState = PlayerState.Idle;
+                print("정지상태");
             }
         }
 
@@ -84,12 +88,12 @@ public class SWH_Controller2 : MonoBehaviour
             currentState = PlayerState.Action;
             StartCoroutine(ActionStateCooldown());
             print("액션");
-            
         }
 
         Vector2 movement = new Vector2(horizontal, vertical);
         playerRB.velocity = movement.normalized * speed;
     }
+
     IEnumerator ActionStateCooldown()
     {
         yield return new WaitForSeconds(1f);  // 행동 상태를 유지할 시간 (초 단위)
@@ -146,15 +150,15 @@ public class SWH_Controller2 : MonoBehaviour
             switch (currentState)
             {
                 case PlayerState.Idle:
-                    Debug.Log(animPrefix + "Idle"  + direction);
+                    //Debug.Log(animPrefix + "Idle"  + direction);
                     anim.Play(animPrefix + "Idle" + direction, 0);
                     break;
                 case PlayerState.Move:
-                    Debug.Log(animPrefix + "Walk"  + direction);
+                    //Debug.Log(animPrefix + "Walk"  + direction);
                     anim.Play(animPrefix + "Walk"  + direction, 0);
                     break;
                 case PlayerState.Action:
-                    Debug.Log(animPrefix + "Action" + direction);
+                    //Debug.Log(animPrefix + "Action" + direction);
                     anim.Play(animPrefix + "Action"  + direction, 0);
                     break;
                 default:

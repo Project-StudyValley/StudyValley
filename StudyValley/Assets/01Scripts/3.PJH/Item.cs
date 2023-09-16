@@ -5,14 +5,20 @@ using UnityEngine.Tilemaps;
 
 [CreateAssetMenu(menuName = "Scriptable object/Item")]
 public class Item : ScriptableObject
-{    
-    public ItemType itemType;      
-    public ActionType actionType;    
-    public bool stackable = true;    
+{
+    public string Name;
+    public bool stackable = true;
+    public Sprite image;
+    public ToolAction onAction;
+    public ToolAction onTileMapAction;
+    public ToolAction onItemUsed;
+    public Crop crop;
+
+    public ItemType itemType;
+    public ActionType actionType;
     public int durability = 10;
     public int price = 1;
     public int regain = 1;
-    public Sprite image;
 }
 
 public enum ItemType

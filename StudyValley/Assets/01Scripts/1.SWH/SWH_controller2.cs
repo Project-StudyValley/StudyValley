@@ -8,14 +8,20 @@ public class SWH_Controller2 : MonoBehaviour
     private Rigidbody2D playerRB;
     private Animator[] partsAnim;
     private BoxCollider2D boxCollider;
-
-    private Vector2 vec2;
+    
+    [HideInInspector]
+    public Vector2 movement;
     private float moveX = 0;
     private float moveY = 0;
     private string LastDir = "Down";
 
+    public string currentMapName;
+
     [SerializeField]
-    private float speed;
+    private float speed = 5;
+    [SerializeField] 
+    private float runSpeed = 8f;
+    public bool running;
 
     public int hairAnimNum = 1;
     public int faceAnimNum = 1;
@@ -28,10 +34,10 @@ public class SWH_Controller2 : MonoBehaviour
         Move,
         Action
     }
+    [HideInInspector]
+    public PlayerState currentState;
 
-    private PlayerState currentState;
-
-    void Awake()
+    private void Awake()
     {
         playerRB = GetComponent<Rigidbody2D>();
         partsAnim = GetComponentsInChildren<Animator>();
@@ -49,11 +55,26 @@ public class SWH_Controller2 : MonoBehaviour
 
     }
 
-    void Update()
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            running = true;
+        }
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            running = false;
+        }
+
+        
+    }
+
+    private void FixedUpdate()
     {
         PlayerMovement();
         UpdateAnimation();
     }
+
 
     private void PlayerMovement()
     {
@@ -76,25 +97,26 @@ public class SWH_Controller2 : MonoBehaviour
         }
         else if (Input.GetButtonUp("Horizontal") || Input.GetButtonUp("Vertical"))
         {
-            if (Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") == 0)
+            if (horizontal == 0 && vertical == 0)
             {
                 currentState = PlayerState.Idle;
+                //lastMotionVector = new Vector2(horizontal, vertical).normalized;
                 print("정지상태");
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+/*        if (Input.GetKeyDown(KeyCode.E))
         {
             currentState = PlayerState.Action;
             StartCoroutine(ActionStateCooldown());
             print("액션");
-        }
+        }*/
 
-        Vector2 movement = new Vector2(horizontal, vertical);
-        playerRB.velocity = movement.normalized * speed;
+        movement = new Vector2(horizontal, vertical).normalized;
+        playerRB.velocity = movement * (running ? runSpeed : speed);
     }
 
-    IEnumerator ActionStateCooldown()
+    public IEnumerator ActionStateCooldown()
     {
         yield return new WaitForSeconds(1f);  // 행동 상태를 유지할 시간 (초 단위)
         if (currentState == PlayerState.Action) // 만약 현재 상태가 여전히 Action이라면

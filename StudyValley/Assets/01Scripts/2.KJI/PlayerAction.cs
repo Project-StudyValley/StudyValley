@@ -234,7 +234,7 @@ public class PlayerAction : MonoBehaviour
             }
         }
     }
-    public void ResetGrid()
+/*    public void ResetGrid()
     {
         grid = GameObject.Find("Grid").GetComponent<Grid>();
 
@@ -268,7 +268,7 @@ public class PlayerAction : MonoBehaviour
             ToolTileMap = null;
         }
 
-    }
+    }*/
 
     private List<Tile> TileMapList(TileBase tile)
     {

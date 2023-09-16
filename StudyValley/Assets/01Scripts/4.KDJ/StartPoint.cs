@@ -7,25 +7,25 @@ public class StartPoint : MonoBehaviour
     public string startPoint;           //이동 되어온 맵 이름을 체크하기위한 변수
 
     private CameraManager theCamera;    //자연스러운 카메라 이동을 위해 가져온 카메라 변수 
-    private PlayerController thePlayer; //캐릭터 객체를 가져오기 위한 변수
+    private SWH_Controller2 thePlayer; //캐릭터 객체를 가져오기 위한 변수
 
     private Vector3 cameraVec3;         //카메라 스폰 위치 벡터값
     public GameObject startCameraPos;   //카메라를 스폰시킬 위치를 가지고있는 게임오브젝트
 
-    public PlayerAction playerAction;
+    //public PlayerAction playerAction;
 
     private void Awake()
     {
-        playerAction = GetComponent<PlayerAction>();
+        //playerAction = GetComponent<PlayerAction>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        PlayerAction.instance.ResetGrid();
+        //PlayerAction.instance.ResetGrid();
 
         theCamera = FindObjectOfType<CameraManager>();
-        thePlayer = FindObjectOfType<PlayerController>();
+        thePlayer = FindObjectOfType<SWH_Controller2>();
 
 
         Scene scene = SceneManager.GetActiveScene();
@@ -41,10 +41,6 @@ public class StartPoint : MonoBehaviour
             thePlayer.transform.position = this.transform.position;
             thePlayer.currentMapName = scene.name;
 
-/*            if (startPoint == "ProtoType_Main")
-            {
-               SetActive(false);
-            }*/
         }
 
     }

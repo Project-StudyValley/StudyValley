@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/00Scenes/ProtoType/Opening.unity
     guid: f6b2bba78f615dc4297ab2cd20be0026
   - enabled: 1
+    path: Assets/00Scenes/ProtoType/CharactorCustommizing.unity
+    guid: 25e558a5eb928af42a3c219ca5ff859e
+  - enabled: 1
     path: Assets/00Scenes/ProtoType/ProtoType_Main.unity
     guid: 72ee9879dd4cdf747ae17d1269d7edc0
   - enabled: 1

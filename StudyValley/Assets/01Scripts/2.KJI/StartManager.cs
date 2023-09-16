@@ -9,12 +9,15 @@ using Unity.VisualScripting;
 public class StartManager : MonoBehaviour
 {
     public string SceneToLoad;
+    public string SceneToLoad2;
     public string GameExit;
 
     public void LoadGame()
     {
         SceneManager.LoadScene(SceneToLoad);
+
     }
+
     public void OnButtonClickExit()
     {
         /*UnityEditor.EditorApplication.isPlaying = false;*/

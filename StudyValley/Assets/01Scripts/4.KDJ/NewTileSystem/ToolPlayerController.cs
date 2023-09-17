@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -133,5 +134,19 @@ public class ToolPlayerController : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void ResetScript()
+    {
+        try
+        {
+            GameObject.Find("MarkerTileMap").GetComponent<MarkerManager>();
+            markerManager = GameObject.Find("MarkerTileMap").GetComponent<MarkerManager>();
+        }
+        catch (Exception e)
+        {
+            markerManager = null;
+        }
+
     }
 }

@@ -759,9 +759,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 608626244}
-  - component: {fileID: 608626243}
   - component: {fileID: 608626242}
-  - component: {fileID: 608626246}
   - component: {fileID: 608626247}
   - component: {fileID: 608626245}
   m_Layer: 0
@@ -785,18 +783,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SceneToLoad: Opening
   GameExit: 
---- !u!114 &608626243
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 608626241}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8bb21f8a04f2174f9baf498975cf250, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &608626244
 Transform:
   m_ObjectHideFlags: 0
@@ -825,18 +811,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAction: 0
---- !u!114 &608626246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 608626241}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5af05b4b863d3f4abc31ebca51958a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &608626247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -851,9 +825,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buttonScenePairs:
   - ButtonName: CustomButton
-    sceneToLoad: CharactorCustommizing 1
+    sceneToLoad: CharactorCustommizing 2
   - ButtonName: StratButton
-    sceneToLoad: CharactorCustommizing 1
+    sceneToLoad: CharactorCustommizing 2
 --- !u!1 &782257469
 GameObject:
   m_ObjectHideFlags: 0

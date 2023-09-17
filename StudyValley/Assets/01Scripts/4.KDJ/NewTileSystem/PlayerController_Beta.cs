@@ -36,10 +36,10 @@ public class PlayerController_Beta : MonoBehaviour
     public LayerMask layerMask;
     Vector2 rayDirection;
 
-    GameObject storageInventory;
+    [HideInInspector] public GameObject storageInventory;
 
     Collider2D playerCollider;
-
+    private Vector2 vec2;
 
     public enum PlayerState
     {
@@ -82,16 +82,17 @@ public class PlayerController_Beta : MonoBehaviour
 
     private void Update()
     {
-      
+        
         rayDirection = new Vector2(transform.position.x, transform.position.y - 0.3f);        
         Debug.DrawRay(rayDirection, playerDirection, new Color(1, 0, 0));
+        Debug.Log("1111");
         RaycastHit2D interactionObject = Physics2D.Raycast(rayDirection, playerDirection, 1f, layerMask);
 
         // 창고 상호작용
         if (interactionObject.collider != null)
         {
-            Debug.Log(rayDirection);
-            Storage storage = interactionObject.collider.gameObject.GetComponent<Storage>();
+            
+            //Storage storage = interactionObject.collider.gameObject.GetComponent<Storage>();
             storageInventory = interactionObject.collider.gameObject.GetComponent<Storage>().storageInventory;
             print(interactionObject.collider.gameObject.name);
             if (Input.GetKeyDown(KeyCode.E))
@@ -223,12 +224,31 @@ public class PlayerController_Beta : MonoBehaviour
             }
         }
 
-/*        if (Input.GetKeyDown(KeyCode.E))
+        vec2 = new Vector2(horizontal, vertical);
+                       
+        if (horizontal > 0)
         {
-            currentState = PlayerState.Action;
-            StartCoroutine(ActionStateCooldown());
-            print("액션");
-        }*/
+            playerDirection = Vector3.right;
+        }
+        else if (horizontal < 0)
+        {
+            playerDirection = Vector3.left;
+        }
+        else if (vertical > 0)
+        {
+            playerDirection = Vector3.up;
+        }
+        else if (vertical < 0)
+        {
+            playerDirection = Vector3.down;
+        }
+
+        /*        if (Input.GetKeyDown(KeyCode.E))
+                {
+                    currentState = PlayerState.Action;
+                    StartCoroutine(ActionStateCooldown());
+                    print("액션");
+                }*/
 
         movement = new Vector2(horizontal, vertical).normalized;
         playerRB.velocity = movement * (running ? runSpeed : speed);

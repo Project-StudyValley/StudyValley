@@ -64,14 +64,17 @@ public class ToolPlayerController : MonoBehaviour
         Marker();
         SelectTile();
         CanSelectCheck();
-        if (Input.GetMouseButtonDown(0))
+        if (!InventoryManager.instance.mainInventory.activeInHierarchy && !PlayerController_Beta.instance.storageInventory.activeInHierarchy)
         {
-            if (UseToolWorld() == true)
+            if (Input.GetMouseButtonDown(0))
             {
-                return;
+                if (UseToolWorld() == true)
+                {
+                    return;
+                }
+                UseToolGrid();
             }
-            UseToolGrid();
-        }
+        }        
     }
 
     private void SelectTile()

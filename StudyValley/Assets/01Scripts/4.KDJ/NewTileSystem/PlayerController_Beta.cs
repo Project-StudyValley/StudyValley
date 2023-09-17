@@ -41,6 +41,7 @@ public class PlayerController_Beta : MonoBehaviour
     {
         playerRB = GetComponent<Rigidbody2D>();
         partsAnim = GetComponentsInChildren<Animator>();
+        boxCollider = GetComponent<BoxCollider2D>();
 
         this.transform.SetParent(null);
         DontDestroyOnLoad(this.gameObject);

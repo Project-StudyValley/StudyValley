@@ -11,12 +11,12 @@ public class TransferMap : MonoBehaviour
 /*    public Transform SpawnPoint;
     public StartPoint otherSP;*/
 
-    private PlayerController thePlayer;
+    private PlayerController_Beta thePlayer;
     private CameraManager theCamera;
 
     void Start()
     {
-        thePlayer = FindObjectOfType<PlayerController>();
+        thePlayer = FindObjectOfType<PlayerController_Beta>();
         theCamera = FindObjectOfType<CameraManager>();
 
     }

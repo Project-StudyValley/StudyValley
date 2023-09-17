@@ -4,16 +4,20 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.UI;
 using static PlayerController_Beta;
 
 public class ToolPlayerController : MonoBehaviour
 {
+    public static ToolPlayerController instance;
+
     private PlayerController_Beta playerCnt;
     private Rigidbody2D rgdb2D;
     private Animator animator;
 
     public InventoryManager inventoryManager;
     public Item[] itemsToPickup;
+
 
     [SerializeField]
     private float offsetDistance = 1f;
@@ -28,6 +32,7 @@ public class ToolPlayerController : MonoBehaviour
     [SerializeField]
     private TileData plowableTiles;
 
+    int selectedSlot = -1;
     InventorySlot[] inventorySlot;
 
     private Vector3Int selectedTilePosition;
@@ -35,9 +40,23 @@ public class ToolPlayerController : MonoBehaviour
 
     private void Awake()
     {
+        if (instance == null)
+        {
+            DontDestroyOnLoad(this.gameObject);
+            this.transform.SetParent(null);
+            instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
         playerCnt = GetComponent<PlayerController_Beta>();
         rgdb2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
+
+
+        ResetScript();
     }
 
     private void Update()
@@ -52,7 +71,6 @@ public class ToolPlayerController : MonoBehaviour
                 return;
             }
             UseToolGrid();
-
         }
     }
 
@@ -80,7 +98,7 @@ public class ToolPlayerController : MonoBehaviour
     {
         Vector2 position = rgdb2D.position + playerCnt.movement * offsetDistance;
 
-        Item selectedItem = InventoryManager.instance.GetSelectedItem(false);
+        Item selectedItem = InventoryManager.instance.GetSelectedItem(true);
         if (selectedItem == null)
         {
             return false;
@@ -92,6 +110,7 @@ public class ToolPlayerController : MonoBehaviour
             playerCnt.currentState = PlayerState.Action;
             StartCoroutine(playerCnt.ActionStateCooldown());
             print("액션1");
+
             complete = selectedItem.onAction.OnApply(position);
 
             if (complete == true && selectedItem.itemType == ItemType.tool)
@@ -106,27 +125,28 @@ public class ToolPlayerController : MonoBehaviour
 
         return complete;
     }
-        
+
     private void UseToolGrid()
     {
-        if (selectable)
+        if (selectable == true)
         {
             Debug.Log("액션2");
             Item selectedItem = InventoryManager.instance.GetSelectedItem(true);
-            
+
             if (selectedItem == null)
             {
                 return;
             }
             bool complete = false;
-            if (selectedItem.durability >= 1 && selectedItem.onTileMapAction != null)
+            if (selectedItem.onTileMapAction != null)
             {
                 playerCnt.currentState = PlayerState.Action;
                 StartCoroutine(playerCnt.ActionStateCooldown());
                 Debug.Log("액션2");
+
                 complete = selectedItem.onTileMapAction.OnApplyToTileMap(selectedTilePosition, tileMapReadController, selectedItem);
 
-                if (complete == true && selectedItem.itemType == ItemType.tool)
+                if (complete == true)
                 {
                     selectedItem.DecreaseDurability();
                     Debug.Log("내구도 감소");
@@ -149,6 +169,27 @@ public class ToolPlayerController : MonoBehaviour
         catch (Exception e)
         {
             markerManager = null;
+        }
+
+        try
+        {
+            GameObject.Find("InventoryManager").GetComponent<InventoryManager>();
+            inventoryManager = GameObject.Find("InventoryManager").GetComponent<InventoryManager>();
+        }
+        catch (Exception e)
+        {
+            inventoryManager = null;
+        }
+
+        try
+        {
+            GameObject.Find("GameManager").GetComponent<TileMapReadController>();
+            tileMapReadController = GameObject.Find("GameManager").GetComponent<TileMapReadController>();
+
+        }
+        catch (Exception e)
+        {
+            tileMapReadController = null;
         }
 
     }

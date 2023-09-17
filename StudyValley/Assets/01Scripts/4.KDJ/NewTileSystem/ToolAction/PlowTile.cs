@@ -11,6 +11,7 @@ public class PlowTile : ToolAction
     public override bool OnApplyToTileMap(Vector3Int gridPosition, TileMapReadController tileMapReadController, Item item)
     {
         TileBase tileToPlow = tileMapReadController.GetTileBase(gridPosition);
+        Debug.Log("!#");
 
         if (canPlow.Contains(tileToPlow) == false)
         {

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Exe
   stackable: 0
-  image: {fileID: 21300000, guid: b3a67fc6bd9f6405ba5785b99c7d830a, type: 3}
+  image: {fileID: 1005356805, guid: 590fb40dbd009f64d9906c388aa17637, type: 3}
   onAction: {fileID: 11400000, guid: eaf000f04a3c4d14eab11dc91ebfe282, type: 2}
   onTileMapAction: {fileID: 0}
   onItemUsed: {fileID: 0}
@@ -24,3 +24,4 @@ MonoBehaviour:
   durability: 10
   price: 1
   regain: 1
+  itemGO: {fileID: 0}

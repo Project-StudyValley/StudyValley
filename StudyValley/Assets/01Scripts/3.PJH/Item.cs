@@ -20,6 +20,8 @@ public class Item : ScriptableObject
     public int price = 1;
     public int regain = 1;
 
+    public GameObject itemGO;
+
     public void DecreaseDurability(int amount = 1)
     {
         durability -= amount;

@@ -21,6 +21,7 @@ MonoBehaviour:
   crop: {fileID: 0}
   itemType: 1
   actionType: 2
-  durability: 1
+  durability: -22
   price: 1
   regain: 1
+  itemGO: {fileID: 0}

@@ -13,7 +13,7 @@ public class InventoryManager : MonoBehaviour
     public GameObject inventoryItemPrefab;
 
     int selectedSlot = -1;
-    
+
     public GameObject mainInventoryGroup;
 
     //부모위치선정  
@@ -119,9 +119,10 @@ public class InventoryManager : MonoBehaviour
 
         return false;
     }
+
     public void RemoveItem(Item itemToRemove, int count = 1)
     {
-        if (itemToRemove == null || count <= 0 )
+        if (itemToRemove == null || count <= 0)
         {
             return;
         }
@@ -180,7 +181,6 @@ public class InventoryManager : MonoBehaviour
         if (itemInSlot != null)
         {
             Item item = itemInSlot.item;
-
             if (use == true)
             {
                 itemInSlot.count--;

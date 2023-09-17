@@ -28,9 +28,10 @@ public class Item : ScriptableObject
         if(durability <= 0)
         {
             Debug.Log("³»±¸µµ");
-            InventoryManager.instance.RemoveItem(this);
+            InventoryManager.instance.GetSelectedItem(this);
         }
     }
+    
 }
 
 public enum ItemType

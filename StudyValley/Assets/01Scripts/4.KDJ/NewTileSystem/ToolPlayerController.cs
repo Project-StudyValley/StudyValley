@@ -94,6 +94,7 @@ public class ToolPlayerController : MonoBehaviour
         Vector3Int gridPosition = tileMapReadController.GetGridPosition(Input.mousePosition, true);
         markerManager.markedCellPosition = gridPosition;
     }
+
     private bool UseToolWorld()
     {
         Vector2 position = rgdb2D.position + playerCnt.movement * offsetDistance;
@@ -131,7 +132,7 @@ public class ToolPlayerController : MonoBehaviour
         if (selectable == true)
         {
             Debug.Log("액션2");
-            Item selectedItem = InventoryManager.instance.GetSelectedItem(true);
+            Item selectedItem = InventoryManager.instance.GetSelectedItem(false);
 
             if (selectedItem == null)
             {
@@ -148,8 +149,6 @@ public class ToolPlayerController : MonoBehaviour
 
                 if (complete == true)
                 {
-                    selectedItem.DecreaseDurability();
-                    Debug.Log("내구도 감소");
                     if (selectedItem.onItemUsed != null)
                     {
                         selectedItem.onItemUsed.OnItemUsed(selectedItem, inventoryManager);

@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerController_Beta : MonoBehaviour
 {
+    public static PlayerController_Beta instance;
 
     private Rigidbody2D playerRB;
     private Animator[] partsAnim;
@@ -50,13 +52,23 @@ public class PlayerController_Beta : MonoBehaviour
 
     private void Awake()
     {
+        if (instance == null)
+        {
+            this.transform.SetParent(null);
+            DontDestroyOnLoad(this.gameObject);
+            instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
         playerRB = GetComponent<Rigidbody2D>();
         partsAnim = GetComponentsInChildren<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
         playerCollider = GetComponent<Collider2D>();
 
-        this.transform.SetParent(null);
-        DontDestroyOnLoad(this.gameObject);
+/*        this.transform.SetParent(null);
+        DontDestroyOnLoad(this.gameObject);*/
 
         currentState = PlayerState.Idle;
     }
@@ -70,22 +82,15 @@ public class PlayerController_Beta : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            running = true;
-        }
-        if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            running = false;
-        }
-
-        rayDirection = new Vector2(transform.position.x, transform.position.y - 0.3f);
+      
+        rayDirection = new Vector2(transform.position.x, transform.position.y - 0.3f);        
         Debug.DrawRay(rayDirection, playerDirection, new Color(1, 0, 0));
         RaycastHit2D interactionObject = Physics2D.Raycast(rayDirection, playerDirection, 1f, layerMask);
 
         // 창고 상호작용
         if (interactionObject.collider != null)
         {
+            Debug.Log(rayDirection);
             Storage storage = interactionObject.collider.gameObject.GetComponent<Storage>();
             storageInventory = interactionObject.collider.gameObject.GetComponent<Storage>().storageInventory;
             print(interactionObject.collider.gameObject.name);
@@ -153,6 +158,15 @@ public class PlayerController_Beta : MonoBehaviour
 
             StartCoroutine(DropItemWithDelay());
 
+        }
+
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            running = true;
+        }
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            running = false;
         }
 
     }

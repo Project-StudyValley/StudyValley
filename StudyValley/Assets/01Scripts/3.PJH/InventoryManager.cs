@@ -120,7 +120,7 @@ public class InventoryManager : MonoBehaviour
         return false;
     }
 
-    public void RemoveItem(Item itemToRemove, int count = 1)
+/*    public void RemoveItem(Item itemToRemove, int count = 1)
     {
         if (itemToRemove == null || count <= 0)
         {
@@ -163,7 +163,7 @@ public class InventoryManager : MonoBehaviour
                 }
             }
         }
-    }
+    }*/
 
 
     void SpawnNewItem(Item item, InventorySlot slot)
@@ -183,14 +183,26 @@ public class InventoryManager : MonoBehaviour
             Item item = itemInSlot.item;
             if (use == true)
             {
-                itemInSlot.count--;
-                if (itemInSlot.count <= 0)
+                if (item.itemType == ItemType.tool)
                 {
-                    Destroy(itemInSlot.gameObject);
+                    item.durability -= 1;
+                    if (item.durability <= 0)
+                    {
+                        Debug.Log("³»±¸µµ0");
+                        Destroy(itemInSlot.gameObject);
+                    }
                 }
                 else
                 {
-                    itemInSlot.RefreshCount();
+                    itemInSlot.count--;
+                    if (itemInSlot.count <= 0)
+                    {
+                        Destroy(itemInSlot.gameObject);
+                    }
+                    else
+                    {
+                        itemInSlot.RefreshCount();
+                    }
                 }
             }
             return item;

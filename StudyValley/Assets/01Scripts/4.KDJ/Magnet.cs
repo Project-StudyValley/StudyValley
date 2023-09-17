@@ -29,7 +29,7 @@ public class Magnet : MonoBehaviour
         {
             //아이템과 플레이어 사이의 거리 계산
             float distance = Vector3.Distance(transform.position, player.position);
-            Collider2D playerCollider = PlayerController.instance.GetComponent<Collider2D>();
+            Collider2D playerCollider = PlayerController_Beta.instance.GetComponent<Collider2D>();
 
             //거리가 magnetDistance이내일 경우 아이템을 플레이어 쪽으로 이동
             if (distance <= magnetDistance && playerCollider.enabled)

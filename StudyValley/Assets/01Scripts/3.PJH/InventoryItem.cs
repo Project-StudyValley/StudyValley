@@ -22,7 +22,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         baseRect = transform.parent.parent.GetComponent<RectTransform>().rect;
 
-        
+        item.durability = 10;
         
     }
 
@@ -67,7 +67,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         //Debug.Log("End drag");
         image.raycastTarget = true;
         transform.SetParent(parentAfterDrag);
-        Collider2D playerCollider = PlayerController.instance.GetComponent<Collider2D>();
+        Collider2D playerCollider = PlayerController_Beta.instance.GetComponent<Collider2D>();
 
         // 인벤토리 밖에 드랍하면
         if (transform.localPosition.x < baseRect.xMin
@@ -79,7 +79,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             playerCollider.enabled = false;
             
             // 해당 아이템을 버린다.
-            item.itemGO.transform.position = PlayerController.instance.transform.position;
+            item.itemGO.transform.position = PlayerController_Beta.instance.transform.position;
             for (int i = 0; i < count; i++)
             {
                 GameObject instanceItem = Instantiate(item.itemGO);

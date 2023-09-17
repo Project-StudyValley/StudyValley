@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using static PlayerController_Beta;
@@ -51,6 +52,7 @@ public class ToolPlayerController : MonoBehaviour
                 return;
             }
             UseToolGrid();
+
         }
     }
 
@@ -107,10 +109,11 @@ public class ToolPlayerController : MonoBehaviour
         
     private void UseToolGrid()
     {
-        if (selectable == true)
+        if (selectable)
         {
+            Debug.Log("액션2");
             Item selectedItem = InventoryManager.instance.GetSelectedItem(true);
-
+            
             if (selectedItem == null)
             {
                 return;
@@ -120,7 +123,7 @@ public class ToolPlayerController : MonoBehaviour
             {
                 playerCnt.currentState = PlayerState.Action;
                 StartCoroutine(playerCnt.ActionStateCooldown());
-                print("액션2");
+                Debug.Log("액션2");
                 complete = selectedItem.onTileMapAction.OnApplyToTileMap(selectedTilePosition, tileMapReadController, selectedItem);
 
                 if (complete == true && selectedItem.itemType == ItemType.tool)

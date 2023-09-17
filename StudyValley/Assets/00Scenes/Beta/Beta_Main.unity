@@ -298,7 +298,7 @@ PrefabInstance:
       objectReference: {fileID: 725412533}
     - target: {fileID: 7747865235279173429, guid: ca25cffaf8fdc0e4e901b7a970cc096d, type: 3}
       propertyPath: startItems.Array.size
-      value: 14
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 7747865235279173429, guid: ca25cffaf8fdc0e4e901b7a970cc096d, type: 3}
       propertyPath: toolBarSlots.Array.size
@@ -363,19 +363,19 @@ PrefabInstance:
     - target: {fileID: 7747865235279173429, guid: ca25cffaf8fdc0e4e901b7a970cc096d, type: 3}
       propertyPath: startItems.Array.data[13]
       value: 
-      objectReference: {fileID: 11400000, guid: 2f08b6a412bf62d49988486d7194df84, type: 2}
+      objectReference: {fileID: 11400000, guid: 1b39fed11897391418a7f6e35c461a96, type: 2}
     - target: {fileID: 7747865235279173429, guid: ca25cffaf8fdc0e4e901b7a970cc096d, type: 3}
       propertyPath: startItems.Array.data[14]
       value: 
-      objectReference: {fileID: 11400000, guid: a773054589f0f384aa07207622ba6b55, type: 2}
+      objectReference: {fileID: 11400000, guid: 1b39fed11897391418a7f6e35c461a96, type: 2}
     - target: {fileID: 7747865235279173429, guid: ca25cffaf8fdc0e4e901b7a970cc096d, type: 3}
       propertyPath: startItems.Array.data[15]
       value: 
-      objectReference: {fileID: 11400000, guid: a773054589f0f384aa07207622ba6b55, type: 2}
+      objectReference: {fileID: 11400000, guid: 1b39fed11897391418a7f6e35c461a96, type: 2}
     - target: {fileID: 7747865235279173429, guid: ca25cffaf8fdc0e4e901b7a970cc096d, type: 3}
       propertyPath: startItems.Array.data[16]
       value: 
-      objectReference: {fileID: 11400000, guid: a773054589f0f384aa07207622ba6b55, type: 2}
+      objectReference: {fileID: 11400000, guid: 1b39fed11897391418a7f6e35c461a96, type: 2}
     - target: {fileID: 7747865235279173429, guid: ca25cffaf8fdc0e4e901b7a970cc096d, type: 3}
       propertyPath: startItems.Array.data[17]
       value: 
@@ -3518,8 +3518,8 @@ RectTransform:
   m_Father: {fileID: 1793869624}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4870,6 +4870,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 957299703}
     - target: {fileID: 4874813086157634466, guid: 70760b1628c04a64ea657d1d32dbec36, type: 3}
+      propertyPath: inventoryManager
+      value: 
+      objectReference: {fileID: 1554076753}
+    - target: {fileID: 4874813086157634466, guid: 70760b1628c04a64ea657d1d32dbec36, type: 3}
       propertyPath: tileMapReadController
       value: 
       objectReference: {fileID: 872990038}
@@ -4879,7 +4883,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8100677387267512758, guid: 70760b1628c04a64ea657d1d32dbec36, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8756091575699426861, guid: 70760b1628c04a64ea657d1d32dbec36, type: 3}
       propertyPath: m_RootOrder
@@ -5234,6 +5238,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1522845726}
   m_CullTransparentMesh: 1
+--- !u!114 &1554076753 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7747865235279173429, guid: ca25cffaf8fdc0e4e901b7a970cc096d, type: 3}
+  m_PrefabInstance: {fileID: 18983962}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f32d7b1d5fdb276428a8590740d5cdf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1587058815
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5329,7 +5344,7 @@ RectTransform:
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -2.5, y: 0}
   m_SizeDelta: {x: 5, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}

@@ -9,12 +9,12 @@ public class TileMapReadController : MonoBehaviour
 
     [SerializeField]
     private Tilemap tilemap;
-/*    [SerializeField]
+    [SerializeField]
     private List<TileData> tileDatas;
 
-    Dictionary<TileBase, TileData> dataFromTiles;*/
+    Dictionary<TileBase, TileData> dataFromTiles;
 
-/*    private void Start()
+    private void Start()
     {
         dataFromTiles = new Dictionary<TileBase, TileData>();
 
@@ -25,7 +25,7 @@ public class TileMapReadController : MonoBehaviour
                 dataFromTiles.Add(tile, tileData);
             }
         }
-    }*/
+    }
 
     private void Update()
     {

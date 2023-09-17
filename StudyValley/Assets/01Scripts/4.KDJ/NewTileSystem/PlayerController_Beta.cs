@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SWH_Controller2 : MonoBehaviour
+public class PlayerController_Beta : MonoBehaviour
 {
 
     private Rigidbody2D playerRB;

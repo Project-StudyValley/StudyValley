@@ -22,6 +22,12 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         //count = 1;
         RefreshCount();
     }
+    public void Clear()
+    {
+        item = null;
+        count = 0;
+    }
+
 
     public void RefreshCount()
     {

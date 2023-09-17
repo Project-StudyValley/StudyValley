@@ -18,7 +18,7 @@ public class CustomUIController : MonoBehaviour
                 maxTopAnimNum = 3,
                 maxBottomAnimNum = 3;
 
-    public SWH_Controller2 playerController;
+    public PlayerController_Beta playerController;
 
     private int currentHairAnimNum = 1,
                 currentFaceAnimNum = 1,
@@ -30,7 +30,7 @@ public class CustomUIController : MonoBehaviour
     {
         if (playerController == null)
         {
-            playerController = FindObjectOfType<SWH_Controller2>();
+            playerController = FindObjectOfType<PlayerController_Beta>();
         }
         UpdateAnimText();
         

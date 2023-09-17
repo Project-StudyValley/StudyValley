@@ -19,7 +19,7 @@ public class ItemDrop : MonoBehaviour
 
     private Vector2 dir;    
     private int currentBounce = 0;
-    private bool isGrounded = true;
+    public bool isGrounded = true;
 
     private float maxHeight;
     private float currentHeight;

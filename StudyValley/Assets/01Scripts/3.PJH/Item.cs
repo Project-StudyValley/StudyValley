@@ -13,6 +13,8 @@ public class Item : ScriptableObject
     public int price = 1;
     public int regain = 1;
     public Sprite image;
+
+    public GameObject itemGO;
 }
 
 public enum ItemType

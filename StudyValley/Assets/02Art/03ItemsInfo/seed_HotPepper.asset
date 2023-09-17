@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9f1cf85e1ec3f4479b9cac62a27280b, type: 3}
   m_Name: seed_HotPepper
   m_EditorClassIdentifier: 
+  itemType: 0
   actionType: 4
   stackable: 1
+  durability: 10
+  price: 1
+  regain: 1
   image: {fileID: 1770690607, guid: 6af4dd6fd4c23be45bf7ce62f180fd93, type: 3}
+  itemGO: {fileID: 7806247317202894188, guid: 478971f24a46c0c4b820274444f981b2, type: 3}

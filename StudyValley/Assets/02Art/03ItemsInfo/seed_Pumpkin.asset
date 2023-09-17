@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9f1cf85e1ec3f4479b9cac62a27280b, type: 3}
   m_Name: seed_Pumpkin
   m_EditorClassIdentifier: 
+  itemType: 0
   actionType: 6
   stackable: 1
+  durability: 10
+  price: 1
+  regain: 1
   image: {fileID: 2141905389, guid: 6af4dd6fd4c23be45bf7ce62f180fd93, type: 3}
+  itemGO: {fileID: 4935057479788749691, guid: 8f8c8d5ff483d0a438993a6554c8ab03, type: 3}

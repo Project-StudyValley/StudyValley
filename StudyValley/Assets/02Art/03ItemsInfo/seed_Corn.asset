@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9f1cf85e1ec3f4479b9cac62a27280b, type: 3}
   m_Name: seed_Corn
   m_EditorClassIdentifier: 
+  itemType: 0
   actionType: 5
   stackable: 1
+  durability: 10
+  price: 1
+  regain: 1
   image: {fileID: -2020283776, guid: 6af4dd6fd4c23be45bf7ce62f180fd93, type: 3}
+  itemGO: {fileID: 3825549653045263005, guid: cfc583f9ae2082843ac3538cafa107b3, type: 3}

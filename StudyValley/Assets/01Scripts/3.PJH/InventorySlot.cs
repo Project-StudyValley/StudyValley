@@ -9,6 +9,8 @@ public class InventorySlot : MonoBehaviour, IDropHandler
     public Image image;
     public Sprite selectedSprite, notSelectedSprite;
 
+    
+
     public void Select()
     {
         image.sprite = selectedSprite;
@@ -26,5 +28,9 @@ public class InventorySlot : MonoBehaviour, IDropHandler
             InventoryItem inventoryItem = eventData.pointerDrag.GetComponent<InventoryItem>();
             inventoryItem.parentAfterDrag = transform;
         }
+
+        
+
+
     }
 }

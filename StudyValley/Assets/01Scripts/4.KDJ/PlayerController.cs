@@ -8,7 +8,7 @@ using UnityEngine.UIElements;
 
 public class PlayerController : MonoBehaviour
 {
-    private static PlayerController instance;
+    public static PlayerController instance;
 
     private Rigidbody2D playerRB;
     private Animator playerAnim;
@@ -28,6 +28,9 @@ public class PlayerController : MonoBehaviour
     Vector2 rayDirection;
 
     GameObject storageInventory;
+
+    Collider2D playerCollider;
+    
 
     // Start is called before the first frame update
     void Awake()
@@ -51,6 +54,8 @@ public class PlayerController : MonoBehaviour
         playerRB = GetComponent<Rigidbody2D>();
         playerAnim = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
+
+        playerCollider = instance.GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
@@ -69,9 +74,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 //if (InventoryManager.instance.mainInventoryGroup.activeInHierarchy) 
-                //    return;
-
-                //GetComponent<RectTransform>().anchoredPosition
+                //    return;    
                 //NPC
                 if (interactionObject.collider.tag == "NPC")
                 {
@@ -86,18 +89,14 @@ public class PlayerController : MonoBehaviour
                 }
                 //Storage
                 else if (interactionObject.collider.tag == "Storage")
-                {
-                    //Debug.Log("디버그");
+                {                    
                     ////창고
                     //storageInventory.SetActive(!storageInventory.activeInHierarchy);
                     ////인벤토리
                     //InventoryManager.instance.mainInventoryGroup.SetActive(!InventoryManager.instance.mainInventoryGroup.activeInHierarchy);
                     //InventoryManager.instance.toolBar.SetActive(!InventoryManager.instance.toolBar.activeInHierarchy);
 
-                    RectTransform mainInvenRT = InventoryManager.instance.mainInventory.GetComponent<RectTransform>();
-
-                    //mainInvenRT.anchoredPosition = new Vector2(0, -330); // 추가 수정 필요
-
+                    RectTransform mainInvenRT = InventoryManager.instance.mainInventory.GetComponent<RectTransform>();                 
 
                     if (storageInventory.activeInHierarchy == false)
                     {
@@ -108,7 +107,6 @@ public class PlayerController : MonoBehaviour
                     }
                     else
                     {
-                        //Debug.Log("도착");
                         storageInventory.SetActive(false);
                         InventoryManager.instance.mainInventoryGroup.SetActive(false);
                         InventoryManager.instance.toolBar.SetActive(true);
@@ -129,8 +127,30 @@ public class PlayerController : MonoBehaviour
             InventoryManager.instance.mainInventoryGroup.SetActive(!InventoryManager.instance.mainInventoryGroup.activeInHierarchy);
             InventoryManager.instance.toolBar.SetActive(!InventoryManager.instance.toolBar.activeInHierarchy);
         }
-
+        
         //  playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * speed * Time.deltaTime;
+
+        if (playerCollider.enabled == false)
+        {
+            
+            StartCoroutine(DropItemWithDelay());
+            
+        }
+    }
+
+    IEnumerator DropItemWithDelay()
+    {
+        Collider2D playerCollider = instance.GetComponent<Collider2D>();
+
+        
+        yield return new WaitForSeconds(2.0f);
+        
+
+        if (playerCollider != null)
+        {            
+            playerCollider.enabled = true;
+        }
+        Debug.Log(playerCollider.enabled);
     }
 
     void FixedUpdate()

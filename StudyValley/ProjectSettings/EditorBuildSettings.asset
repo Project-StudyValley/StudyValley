@@ -15,6 +15,15 @@ EditorBuildSettings:
     path: Assets/00Scenes/ProtoType/CharactorCustommizing.unity
     guid: 25e558a5eb928af42a3c219ca5ff859e
   - enabled: 1
+    path: Assets/00Scenes/Beta/CharactorCustommizing 1.unity
+    guid: e38a220b8fd2e2142960a79ec5269d02
+  - enabled: 1
+    path: Assets/00Scenes/Beta/Opening 1.unity
+    guid: f5980cebb315d374e961b521f8b97346
+  - enabled: 1
+    path: Assets/00Scenes/Beta/StartScean 1.unity
+    guid: e589420308dd3af43b80a14e2e05d61a
+  - enabled: 1
     path: Assets/00Scenes/Beta/Beta_Main.unity
     guid: 86c670790611c004295f4979fa723037
   - enabled: 1

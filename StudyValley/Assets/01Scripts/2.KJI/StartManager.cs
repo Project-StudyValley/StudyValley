@@ -9,7 +9,6 @@ using Unity.VisualScripting;
 public class StartManager : MonoBehaviour
 {
     public string SceneToLoad;
-    public string SceneToLoad2;
     public string GameExit;
 
     public void LoadGame()

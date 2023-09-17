@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1bef0ed9e2a0ad47901082a53ff35da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneToLoad: ProtoType_Main
+  SceneToLoad: Beta_Main
   SceneToLoad2: 
   GameExit: 
 --- !u!114 &232468059

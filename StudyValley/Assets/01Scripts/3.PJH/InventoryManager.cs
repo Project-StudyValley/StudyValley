@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEditor.UIElements;
 using UnityEngine;
 
@@ -12,7 +13,7 @@ public class InventoryManager : MonoBehaviour
     public GameObject inventoryItemPrefab;
 
     int selectedSlot = -1;
-    
+
     public GameObject mainInventoryGroup;
 
     //부모위치선정  
@@ -119,6 +120,52 @@ public class InventoryManager : MonoBehaviour
         return false;
     }
 
+    public void RemoveItem(Item itemToRemove, int count = 1)
+    {
+        if (itemToRemove == null || count <= 0)
+        {
+            return;
+        }
+
+        if (itemToRemove.stackable)
+        {
+            for (int i = 0; i < inventorySlots.Length && count > 0; i++)
+            {
+                InventorySlot slot = inventorySlots[i];
+                InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+                if (itemInSlot == null)
+                    continue;
+                if (itemInSlot.item == itemToRemove)
+                {
+                    int removeCount = Mathf.Min(count, itemInSlot.count);
+                    itemInSlot.count -= removeCount;
+                    count -= removeCount;
+                    if (itemInSlot.count <= 0)
+                    {
+                        itemInSlot.Clear();
+                    }
+                }
+            }
+        }
+        else
+        {
+            while (count > 0)
+            {
+                for (int i = inventorySlots.Length - 1; i >= 0 && count > 0; i--)
+                {
+                    InventorySlot slot = inventorySlots[i];
+                    InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+                    if (itemInSlot == null)
+                        continue;
+
+                    itemInSlot.Clear();
+                    count--;
+                }
+            }
+        }
+    }
+
+
     void SpawnNewItem(Item item, InventorySlot slot)
     {
         GameObject newItemGO = Instantiate(inventoryItemPrefab, slot.transform);
@@ -134,7 +181,6 @@ public class InventoryManager : MonoBehaviour
         if (itemInSlot != null)
         {
             Item item = itemInSlot.item;
-
             if (use == true)
             {
                 itemInSlot.count--;

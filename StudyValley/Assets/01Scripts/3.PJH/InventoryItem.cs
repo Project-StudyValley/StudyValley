@@ -23,7 +23,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         baseRect = transform.parent.parent.GetComponent<RectTransform>().rect;
 
         item.durability = 10;
-        
+
     }
 
     public void InitialiseItem(Item newItem)
@@ -69,32 +69,36 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         transform.SetParent(parentAfterDrag);
         Collider2D playerCollider = PlayerController_Beta.instance.GetComponent<Collider2D>();
 
-        // 인벤토리 밖에 드랍하면
-        if (transform.localPosition.x < baseRect.xMin
-           || transform.localPosition.x > baseRect.xMax
-           || transform.localPosition.y < baseRect.yMin
-           || transform.localPosition.y > baseRect.yMax)
+        //인켜창꺼
+        if (InventoryManager.instance.mainInventory.activeInHierarchy && !PlayerController_Beta.instance.storageInventory.activeInHierarchy)
         {
-            // 플레이어 콜라이더 끄고
-            playerCollider.enabled = false;
-            
-            // 해당 아이템을 버린다.
-            item.itemGO.transform.position = PlayerController_Beta.instance.transform.position;
-            for (int i = 0; i < count; i++)
+            // 인벤토리 밖에 드랍하면
+            if (transform.localPosition.x < baseRect.xMin
+                       || transform.localPosition.x > baseRect.xMax
+                       || transform.localPosition.y < baseRect.yMin
+                       || transform.localPosition.y > baseRect.yMax)
             {
-                GameObject instanceItem = Instantiate(item.itemGO);
-                //ItemDrop isGrounded = instanceItem.GetComponent<ItemDrop>();
-                //isGrounded._isGrounded = true;
+                // 플레이어 콜라이더 끄고
+                playerCollider.enabled = false;
+
+                // 해당 아이템을 버린다.
+                item.itemGO.transform.position = PlayerController_Beta.instance.transform.position;
+                for (int i = 0; i < count; i++)
+                {
+                    GameObject instanceItem = Instantiate(item.itemGO);
+                    //ItemDrop isGrounded = instanceItem.GetComponent<ItemDrop>();
+                    //isGrounded._isGrounded = true;
+                }
+
+                Destroy(gameObject);
             }
-            
-            Destroy(gameObject);
-        }
+        }        
     }
 
     //IEnumerator DropItemWithDelay()
     //{
     //    Collider2D playerCollider = PlayerController.instance.GetComponent<Collider2D>();
-        
+
     //    if (playerCollider != null)
     //    {
     //        Debug.Log("1차");

@@ -74,7 +74,7 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.E))
             {
                 //if (InventoryManager.instance.mainInventoryGroup.activeInHierarchy) 
-                //    return;    
+                //    return;
                 //NPC
                 if (interactionObject.collider.tag == "NPC")
                 {

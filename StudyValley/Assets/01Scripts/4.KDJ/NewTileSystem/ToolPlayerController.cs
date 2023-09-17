@@ -99,7 +99,7 @@ public class ToolPlayerController : MonoBehaviour
     {
         Vector2 position = rgdb2D.position + playerCnt.movement * offsetDistance;
 
-        Item selectedItem = InventoryManager.instance.GetSelectedItem(true);
+        Item selectedItem = InventoryManager.instance.GetSelectedItem(false);
         if (selectedItem == null)
         {
             return false;

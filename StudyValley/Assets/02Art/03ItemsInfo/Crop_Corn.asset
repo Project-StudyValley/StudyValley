@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3856d0440e58ee64f9d3c5eae17c9c69, type: 3}
+  m_Name: Crop_Corn
+  m_EditorClassIdentifier: 
+  timeToGrow: 10
+  yield: {fileID: 11400000, guid: cb2da3e631ca8c240b9d9f6576cf145f, type: 2}
+  count: 1
+  sprites:
+  - {fileID: 1479528450, guid: 6af4dd6fd4c23be45bf7ce62f180fd93, type: 3}
+  - {fileID: -1346685310, guid: 6af4dd6fd4c23be45bf7ce62f180fd93, type: 3}
+  - {fileID: -664021754, guid: 6af4dd6fd4c23be45bf7ce62f180fd93, type: 3}
+  - {fileID: -517406122, guid: 6af4dd6fd4c23be45bf7ce62f180fd93, type: 3}
+  - {fileID: -1820676444, guid: 6af4dd6fd4c23be45bf7ce62f180fd93, type: 3}
+  - {fileID: 2060035862, guid: 6af4dd6fd4c23be45bf7ce62f180fd93, type: 3}
+  growthStageTime: 030000000300000003000000030000000300000003000000

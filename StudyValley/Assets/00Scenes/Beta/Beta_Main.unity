@@ -298,7 +298,7 @@ PrefabInstance:
       objectReference: {fileID: 725412533}
     - target: {fileID: 7747865235279173429, guid: ca25cffaf8fdc0e4e901b7a970cc096d, type: 3}
       propertyPath: startItems.Array.size
-      value: 17
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 7747865235279173429, guid: ca25cffaf8fdc0e4e901b7a970cc096d, type: 3}
       propertyPath: toolBarSlots.Array.size
@@ -315,7 +315,7 @@ PrefabInstance:
     - target: {fileID: 7747865235279173429, guid: ca25cffaf8fdc0e4e901b7a970cc096d, type: 3}
       propertyPath: startItems.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: cb2da3e631ca8c240b9d9f6576cf145f, type: 2}
+      objectReference: {fileID: 11400000, guid: e61082cf01789e04fb5933f4a8b78a7d, type: 2}
     - target: {fileID: 7747865235279173429, guid: ca25cffaf8fdc0e4e901b7a970cc096d, type: 3}
       propertyPath: startItems.Array.data[3]
       value: 
@@ -331,7 +331,7 @@ PrefabInstance:
     - target: {fileID: 7747865235279173429, guid: ca25cffaf8fdc0e4e901b7a970cc096d, type: 3}
       propertyPath: startItems.Array.data[6]
       value: 
-      objectReference: {fileID: 11400000, guid: 4dfe332afdb2ba8459a7d553edaef37e, type: 2}
+      objectReference: {fileID: 11400000, guid: cb2da3e631ca8c240b9d9f6576cf145f, type: 2}
     - target: {fileID: 7747865235279173429, guid: ca25cffaf8fdc0e4e901b7a970cc096d, type: 3}
       propertyPath: startItems.Array.data[7]
       value: 
@@ -351,7 +351,7 @@ PrefabInstance:
     - target: {fileID: 7747865235279173429, guid: ca25cffaf8fdc0e4e901b7a970cc096d, type: 3}
       propertyPath: startItems.Array.data[10]
       value: 
-      objectReference: {fileID: 11400000, guid: 2f08b6a412bf62d49988486d7194df84, type: 2}
+      objectReference: {fileID: 11400000, guid: 4dfe332afdb2ba8459a7d553edaef37e, type: 2}
     - target: {fileID: 7747865235279173429, guid: ca25cffaf8fdc0e4e901b7a970cc096d, type: 3}
       propertyPath: startItems.Array.data[11]
       value: 
@@ -363,7 +363,7 @@ PrefabInstance:
     - target: {fileID: 7747865235279173429, guid: ca25cffaf8fdc0e4e901b7a970cc096d, type: 3}
       propertyPath: startItems.Array.data[13]
       value: 
-      objectReference: {fileID: 11400000, guid: 1b39fed11897391418a7f6e35c461a96, type: 2}
+      objectReference: {fileID: 11400000, guid: 2f08b6a412bf62d49988486d7194df84, type: 2}
     - target: {fileID: 7747865235279173429, guid: ca25cffaf8fdc0e4e901b7a970cc096d, type: 3}
       propertyPath: startItems.Array.data[14]
       value: 
@@ -1432,6 +1432,10 @@ PrefabInstance:
       propertyPath: seededTilemap
       value: 
       objectReference: {fileID: 1047074688}
+    - target: {fileID: 9114481681448244720, guid: e8dde24cea95890408ccaff78b595890, type: 3}
+      propertyPath: cropsSpritePrefab
+      value: 
+      objectReference: {fileID: 6579546715563223332, guid: 191ce47c17750ae49abf8ba8b5fe8712, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

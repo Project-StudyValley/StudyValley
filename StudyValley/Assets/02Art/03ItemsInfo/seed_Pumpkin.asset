@@ -12,11 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9f1cf85e1ec3f4479b9cac62a27280b, type: 3}
   m_Name: seed_Pumpkin
   m_EditorClassIdentifier: 
-  itemType: 0
-  actionType: 6
+  Name: Seed_Pumpkin
   stackable: 1
+  image: {fileID: 2141905389, guid: 6af4dd6fd4c23be45bf7ce62f180fd93, type: 3}
+  onAction: {fileID: 0}
+  onTileMapAction: {fileID: 11400000, guid: e622fad6ce4684c4285d05cfada9f1ef, type: 2}
+  onItemUsed: {fileID: 11400000, guid: e622fad6ce4684c4285d05cfada9f1ef, type: 2}
+  crop: {fileID: 11400000, guid: 10e30c734ea691946a58680513f1e5b3, type: 2}
+  itemType: 2
+  actionType: 2
   durability: 10
   price: 1
   regain: 1
-  image: {fileID: 2141905389, guid: 6af4dd6fd4c23be45bf7ce62f180fd93, type: 3}
   itemGO: {fileID: 4935057479788749691, guid: 8f8c8d5ff483d0a438993a6554c8ab03, type: 3}

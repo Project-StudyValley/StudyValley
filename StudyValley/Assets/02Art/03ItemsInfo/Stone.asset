@@ -24,3 +24,4 @@ MonoBehaviour:
   durability: 10
   price: 1
   regain: 1
+  itemGO: {fileID: 6648847656536596163, guid: 534b9003b4c2b814b924f3849be7fd5a, type: 3}

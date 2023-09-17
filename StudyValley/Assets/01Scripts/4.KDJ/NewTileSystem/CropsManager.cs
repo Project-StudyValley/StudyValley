@@ -8,7 +8,9 @@ using UnityEngine.UIElements;
 public class CropTile
 {
     public int growTimer;
+    public int growStage;
     public Crop crop;
+    public SpriteRenderer renderer;
 }
 
 public class CropsManager : TimeAgent
@@ -21,15 +23,31 @@ public class CropsManager : TimeAgent
     private Tilemap seededTilemap;
     [SerializeField]
     private Tilemap plowedTilemap;
+    [SerializeField]
+    private GameObject cropsSpritePrefab;
 
     Dictionary<Vector2Int, CropTile> crops;
 
     private void Start()
     {
         crops = new Dictionary<Vector2Int, CropTile>();
-        //onTimeTick += Tick;
+
         Init();
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            foreach (CropTile cropTile in crops.Values)
+            {
+                cropTile.renderer.gameObject.SetActive(true);
+                cropTile.renderer.sprite = cropTile.crop.sprites[cropTile.growStage];
+            }
+            
+        }
+    }
+
     public void Tick()
     {
         foreach (CropTile cropTile in crops.Values)
@@ -40,13 +58,20 @@ public class CropsManager : TimeAgent
             }
             cropTile.growTimer += 1;
 
+            if(cropTile.growTimer >= cropTile.crop.growthStageTime[cropTile.growStage])
+            {
+                cropTile.renderer.gameObject.SetActive(true);
+                cropTile.renderer.sprite = cropTile.crop.sprites[cropTile.growStage];
+
+                cropTile.growTimer += 1;
+            }
+
             if (cropTile.growTimer >= cropTile.crop.timeToGrow)
             {
                 Debug.Log("Im done growing");
                 cropTile.crop = null;
             }
-        }
-       
+        }       
     }
 
     public bool Check(Vector3Int position)
@@ -75,6 +100,11 @@ public class CropsManager : TimeAgent
     {
         CropTile crop = new CropTile();
         crops.Add((Vector2Int)position, crop);
+
+        GameObject go = Instantiate(cropsSpritePrefab);
+        go.transform.position = plowedTilemap.CellToWorld(position);
+        go.SetActive(false);
+        crop.renderer = go.GetComponent<SpriteRenderer>();
 
         plowedTilemap.SetTile(position, plowed);
     } 

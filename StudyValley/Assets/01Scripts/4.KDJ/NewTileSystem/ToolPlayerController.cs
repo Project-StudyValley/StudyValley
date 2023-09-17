@@ -30,6 +30,8 @@ public class ToolPlayerController : MonoBehaviour
     [SerializeField]
     private float maxDistance = 1.5f;
     [SerializeField]
+    private ToolAction onTilePickUp;
+    [SerializeField]
     private TileData plowableTiles;
 
     int selectedSlot = -1;
@@ -64,17 +66,19 @@ public class ToolPlayerController : MonoBehaviour
         Marker();
         SelectTile();
         CanSelectCheck();
-        if (!InventoryManager.instance.mainInventory.activeInHierarchy && !PlayerController_Beta.instance.storageInventory.activeInHierarchy)
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                if (UseToolWorld() == true)
+
+
+                if (Input.GetMouseButtonDown(1))
                 {
-                    return;
+                    if (UseToolWorld() == true)
+                    {
+                        return;
+                    }
+                    UseToolGrid();
                 }
-                UseToolGrid();
-            }
-        }        
+          
+        
+
     }
 
     private void SelectTile()
@@ -139,6 +143,7 @@ public class ToolPlayerController : MonoBehaviour
 
             if (selectedItem == null)
             {
+                PickUpTile();
                 return;
             }
             bool complete = false;
@@ -159,6 +164,13 @@ public class ToolPlayerController : MonoBehaviour
                 }
             }
         }
+    }
+    private void PickUpTile()
+    {
+        if (onTilePickUp == null)
+            return;
+
+        onTilePickUp.OnApplyToTileMap(selectedTilePosition, tileMapReadController, null);
     }
 
     public void ResetScript()
@@ -195,4 +207,6 @@ public class ToolPlayerController : MonoBehaviour
         }
 
     }
+
+    
 }

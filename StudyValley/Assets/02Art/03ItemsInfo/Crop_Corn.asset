@@ -18,8 +18,8 @@ MonoBehaviour:
   sprites:
   - {fileID: 1479528450, guid: 6af4dd6fd4c23be45bf7ce62f180fd93, type: 3}
   - {fileID: -1346685310, guid: 6af4dd6fd4c23be45bf7ce62f180fd93, type: 3}
-  - {fileID: -664021754, guid: 6af4dd6fd4c23be45bf7ce62f180fd93, type: 3}
   - {fileID: -517406122, guid: 6af4dd6fd4c23be45bf7ce62f180fd93, type: 3}
   - {fileID: -1820676444, guid: 6af4dd6fd4c23be45bf7ce62f180fd93, type: 3}
   - {fileID: 2060035862, guid: 6af4dd6fd4c23be45bf7ce62f180fd93, type: 3}
   growthStageTime: 030000000300000003000000030000000300000003000000
+  maxGrowStage: 5

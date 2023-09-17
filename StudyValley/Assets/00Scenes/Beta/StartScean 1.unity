@@ -824,8 +824,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonScenePairs:
-  - ButtonName: CustomButton
-    sceneToLoad: CharactorCustommizing 2
   - ButtonName: StratButton
     sceneToLoad: CharactorCustommizing 2
 --- !u!1 &782257469

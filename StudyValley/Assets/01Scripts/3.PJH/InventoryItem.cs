@@ -70,8 +70,8 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         Collider2D playerCollider = PlayerController_Beta.instance.GetComponent<Collider2D>();
 
         //인켜창꺼
-        if (InventoryManager.instance.mainInventory.activeInHierarchy && !PlayerController_Beta.instance.storageInventory.activeInHierarchy)
-        {
+        //if (InventoryManager.instance.mainInventory.activeInHierarchy && !PlayerController_Beta.instance.storageInventory.activeInHierarchy)
+        
             // 인벤토리 밖에 드랍하면
             if (transform.localPosition.x < baseRect.xMin
                        || transform.localPosition.x > baseRect.xMax
@@ -92,7 +92,7 @@ public class InventoryItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
                 Destroy(gameObject);
             }
-        }        
+                
     }
 
     //IEnumerator DropItemWithDelay()

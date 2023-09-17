@@ -28,6 +28,17 @@ public class PlayerController_Beta : MonoBehaviour
     public int bodyAnimNum = 1;
     public int topAnimNum = 1;
     public int bottomAnimNum = 1;
+
+
+    Vector3 playerDirection;
+    public LayerMask layerMask;
+    Vector2 rayDirection;
+
+    GameObject storageInventory;
+
+    Collider2D playerCollider;
+
+
     public enum PlayerState
     {
         Idle,
@@ -42,6 +53,7 @@ public class PlayerController_Beta : MonoBehaviour
         playerRB = GetComponent<Rigidbody2D>();
         partsAnim = GetComponentsInChildren<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
+        playerCollider = GetComponent<Collider2D>();
 
         this.transform.SetParent(null);
         DontDestroyOnLoad(this.gameObject);
@@ -67,8 +79,85 @@ public class PlayerController_Beta : MonoBehaviour
             running = false;
         }
 
-        
+        rayDirection = new Vector2(transform.position.x, transform.position.y - 0.3f);
+        Debug.DrawRay(rayDirection, playerDirection, new Color(1, 0, 0));
+        RaycastHit2D interactionObject = Physics2D.Raycast(rayDirection, playerDirection, 1f, layerMask);
+
+        // 창고 상호작용
+        if (interactionObject.collider != null)
+        {
+            Storage storage = interactionObject.collider.gameObject.GetComponent<Storage>();
+            storageInventory = interactionObject.collider.gameObject.GetComponent<Storage>().storageInventory;
+            print(interactionObject.collider.gameObject.name);
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                //if (InventoryManager.instance.mainInventoryGroup.activeInHierarchy) 
+                //    return;    
+                //NPC
+                if (interactionObject.collider.tag == "NPC")
+                {
+                    if (interactionObject.transform.GetChild(0).gameObject.activeInHierarchy)
+                    {
+                        interactionObject.transform.GetChild(0).gameObject.SetActive(false);
+                    }
+                    else
+                    {
+                        interactionObject.transform.GetChild(0).gameObject.SetActive(true);
+                    }
+                }
+                //Storage
+                else if (interactionObject.collider.tag == "Storage")
+                {
+                    ////창고
+                    //storageInventory.SetActive(!storageInventory.activeInHierarchy);
+                    ////인벤토리
+                    //InventoryManager.instance.mainInventoryGroup.SetActive(!InventoryManager.instance.mainInventoryGroup.activeInHierarchy);
+                    //InventoryManager.instance.toolBar.SetActive(!InventoryManager.instance.toolBar.activeInHierarchy);
+
+                    RectTransform mainInvenRT = InventoryManager.instance.mainInventory.GetComponent<RectTransform>();
+
+                    if (storageInventory.activeInHierarchy == false)
+                    {
+                        storageInventory.SetActive(true);
+                        InventoryManager.instance.mainInventoryGroup.SetActive(true);
+                        InventoryManager.instance.toolBar.SetActive(false);
+                        mainInvenRT.anchoredPosition = new Vector2(0, -330);
+                    }
+                    else
+                    {
+                        storageInventory.SetActive(false);
+                        InventoryManager.instance.mainInventoryGroup.SetActive(false);
+                        InventoryManager.instance.toolBar.SetActive(true);
+                        mainInvenRT.anchoredPosition = new Vector2(0, 0);
+                    }
+                }
+            }
+        }
+
+        // 인벤토리
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            if (storageInventory != null)
+            {
+                if (storageInventory.activeInHierarchy)
+                    return;
+            }
+            InventoryManager.instance.mainInventoryGroup.SetActive(!InventoryManager.instance.mainInventoryGroup.activeInHierarchy);
+            InventoryManager.instance.toolBar.SetActive(!InventoryManager.instance.toolBar.activeInHierarchy);
+        }
+
+        //  playerRB.velocity = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")) * speed * Time.deltaTime;
+
+        if (playerCollider.enabled == false)
+        {
+
+            StartCoroutine(DropItemWithDelay());
+
+        }
+
     }
+
+
 
     private void FixedUpdate()
     {
@@ -76,6 +165,20 @@ public class PlayerController_Beta : MonoBehaviour
         UpdateAnimation();
     }
 
+    IEnumerator DropItemWithDelay()
+    {
+        Collider2D playerCollider = GetComponent<Collider2D>();
+
+
+        yield return new WaitForSeconds(2.0f);
+
+
+        if (playerCollider != null)
+        {
+            playerCollider.enabled = true;
+        }
+        Debug.Log(playerCollider.enabled);
+    }
 
     private void PlayerMovement()
     {

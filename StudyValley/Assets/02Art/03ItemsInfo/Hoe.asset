@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9f1cf85e1ec3f4479b9cac62a27280b, type: 3}
   m_Name: Hoe
   m_EditorClassIdentifier: 
-  Name: Plow
-  stackable: 1
+  Name: Hoe
+  stackable: 0
   image: {fileID: -145801793, guid: 590fb40dbd009f64d9906c388aa17637, type: 3}
   onAction: {fileID: 0}
   onTileMapAction: {fileID: 11400000, guid: c0ac6577cade7f646b5662b658f45ba0, type: 2}
@@ -21,7 +21,7 @@ MonoBehaviour:
   crop: {fileID: 0}
   itemType: 1
   actionType: 2
-  durability: -22
+  durability: 10
   price: 1
   regain: 1
   itemGO: {fileID: 0}

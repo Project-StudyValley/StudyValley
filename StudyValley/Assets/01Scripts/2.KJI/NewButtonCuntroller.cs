@@ -38,6 +38,12 @@ public class NewButtonController : MonoBehaviour
 
     public void LoadScene(string sceneName)
     {
+        Debug.Log(sceneName);
+        if (sceneName == "Beta_Main")
+        {
+            CameraManager.instance.trigger = true;
+        }
         SceneManager.LoadScene(sceneName);
+
     }
 }

@@ -19,4 +19,4 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  isDirty: 1
+  isDirty: 0

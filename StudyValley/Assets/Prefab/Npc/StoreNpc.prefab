@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1300118244920151421}
   - component: {fileID: 17817180117882333}
   - component: {fileID: 3444409142669604550}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: XButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 17817180117882333}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8031462856484374554}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2469551012290950231
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,7 +145,7 @@ GameObject:
   - component: {fileID: 6380977919930333531}
   - component: {fileID: 2111807857976750637}
   - component: {fileID: 4646564343034830832}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: StoreButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -253,8 +265,7 @@ GameObject:
   - component: {fileID: 3075936225007802832}
   - component: {fileID: 2668567442247360375}
   - component: {fileID: 6737104171489885449}
-  - component: {fileID: 3498370669679238562}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Panel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -323,19 +334,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3498370669679238562
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2939174596149105892}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 83992bb87c8b1c8488962b51bacf6471, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dialogText: {fileID: 5942863850738715871}
 --- !u!1 &3915286862137717168
 GameObject:
   m_ObjectHideFlags: 0
@@ -347,7 +345,7 @@ GameObject:
   - component: {fileID: 8581832877004496397}
   - component: {fileID: 2050914113118745024}
   - component: {fileID: 8326792245370787745}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -423,7 +421,7 @@ GameObject:
   - component: {fileID: 5165312250126940298}
   - component: {fileID: 7345769076758208345}
   - component: {fileID: 5942863850738715871}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: NpcLine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -563,9 +561,9 @@ GameObject:
   - component: {fileID: 546453137117866879}
   - component: {fileID: 1908558690104573009}
   - component: {fileID: 8700419673946550559}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: StoreNpc
-  m_TagString: Untagged
+  m_TagString: Npc
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -584,7 +582,7 @@ Transform:
   m_Children:
   - {fileID: 615076070358179894}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1908558690104573009
 SpriteRenderer:
@@ -695,13 +693,13 @@ GameObject:
   - component: {fileID: 9044330393643197623}
   - component: {fileID: 4828957182144919534}
   - component: {fileID: 5850029449358699395}
-  m_Layer: 5
+  m_Layer: 7
   m_Name: Canvas
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &615076070358179894
 RectTransform:
   m_ObjectHideFlags: 0

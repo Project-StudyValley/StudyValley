@@ -50,11 +50,11 @@ TagManager:
   - name: Action
     uniqueID: 1506099097
     locked: 0
-  - name: Objects
-    uniqueID: 1512362921
-    locked: 0
   - name: Wall
     uniqueID: 1114286651
+    locked: 0
+  - name: PlaceObj
+    uniqueID: 1430387973
     locked: 0
   - name: Building_DownSide
     uniqueID: 1637918099
@@ -62,11 +62,14 @@ TagManager:
   - name: StartUI
     uniqueID: 734089749
     locked: 0
-  - name: Charactors
-    uniqueID: 3652762557
-    locked: 0
   - name: Building_UpSide
     uniqueID: 636640145
+    locked: 0
+  - name: Objects
+    uniqueID: 1512362921
+    locked: 0
+  - name: Charactors
+    uniqueID: 3652762557
     locked: 0
   - name: InvisibleWall
     uniqueID: 1065731517

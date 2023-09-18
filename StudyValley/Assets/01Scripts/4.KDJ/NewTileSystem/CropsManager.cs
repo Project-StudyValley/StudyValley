@@ -74,6 +74,7 @@ public class CropsManager : TimeAgent
                 {
                     continue;
                 }
+                
                 cropTile.renderer.gameObject.SetActive(true);
                 cropTile.renderer.sprite = cropTile.crop.sprites[cropTile.growStage];
 
@@ -81,8 +82,10 @@ public class CropsManager : TimeAgent
                 if (cropTile.growStage >= cropTile.crop.maxGrowStage)
                 {
                     cropTile.growStage = 0;
+                    
                     for (int i = 0; i < spawnCont; i++)
                     {
+                        
                         Vector3 position = transform.position;
                         position.x += spread * UnityEngine.Random.value - spread / 2;
                         position.y += spread * UnityEngine.Random.value - spread / 2;

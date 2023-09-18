@@ -91,16 +91,16 @@ public class PlayerController_Beta : MonoBehaviour
         // 창고 상호작용
         if (interactionObject.collider != null)
         {
-            
-            //Storage storage = interactionObject.collider.gameObject.GetComponent<Storage>();
-            storageInventory = interactionObject.collider.gameObject.GetComponent<Storage>().storageInventory;
+
+            Storage storage = interactionObject.collider.gameObject.GetComponent<Storage>();
+            //storageInventory = interactionObject.collider.gameObject.GetComponent<Storage>().storageInventory;
             print(interactionObject.collider.gameObject.name);
             if (Input.GetKeyDown(KeyCode.E))
             {
                 //if (InventoryManager.instance.mainInventoryGroup.activeInHierarchy) 
                 //    return;    
                 //NPC
-                if (interactionObject.collider.tag == "NPC")
+                if (interactionObject.collider.tag == "Npc")
                 {
                     if (interactionObject.transform.GetChild(0).gameObject.activeInHierarchy)
                     {
@@ -122,7 +122,7 @@ public class PlayerController_Beta : MonoBehaviour
 
                     RectTransform mainInvenRT = InventoryManager.instance.mainInventory.GetComponent<RectTransform>();
 
-                    if (storageInventory.activeInHierarchy == false)
+/*                    if (storageInventory.activeInHierarchy == false)
                     {
                         storageInventory.SetActive(true);
                         InventoryManager.instance.mainInventoryGroup.SetActive(true);
@@ -132,6 +132,20 @@ public class PlayerController_Beta : MonoBehaviour
                     else
                     {
                         storageInventory.SetActive(false);
+                        InventoryManager.instance.mainInventoryGroup.SetActive(false);
+                        InventoryManager.instance.toolBar.SetActive(true);
+                        mainInvenRT.anchoredPosition = new Vector2(0, 0);
+                    }*/
+                    if (storage.storageInventory.activeInHierarchy == false)
+                    {
+                        storage.storageInventory.SetActive(true);
+                        InventoryManager.instance.mainInventoryGroup.SetActive(true);
+                        InventoryManager.instance.toolBar.SetActive(false);
+                        mainInvenRT.anchoredPosition = new Vector2(0, -330);
+                    }
+                    else
+                    {
+                        storage.storageInventory.SetActive(false);
                         InventoryManager.instance.mainInventoryGroup.SetActive(false);
                         InventoryManager.instance.toolBar.SetActive(true);
                         mainInvenRT.anchoredPosition = new Vector2(0, 0);
